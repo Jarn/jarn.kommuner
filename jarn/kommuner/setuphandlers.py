@@ -68,17 +68,28 @@ def setupLOSContent(context):
         else:
             sub_topics.append(elem)
 
-    existing = portal.objectIds(['LOSCategory'])
+    if 'tema' not in portal.objectIds():
+        portal.invokeFactory('Folder', 'tema',
+            title='Tema')
+        tema_folder = portal['tema']
+        tema_folder.setExcludeFromNav(True)
+        wftool.doActionFor(tema_folder, 'publish')
+        tema_folder.reindexObject()
+
+    tema_folder = portal['tema']
+
+    existing = tema_folder.objectIds(['LOSCategory'])
     for topic_id in existing:
-        del portal[topic_id]
+        del tema_folder[topic_id]
 
     id_normalizer = getUtility(IIDNormalizer)
+
     for elem in main_topics:
         title = unicode(elem.find('namn').text)
         topic_id = elem.find('identifikator').text
-        folder_id = portal.invokeFactory('LOSCategory', id_normalizer.normalize(title),
+        folder_id = tema_folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
             title=title, losId=topic_id)
-        folder = portal[folder_id]
+        folder = tema_folder[folder_id]
         wftool.doActionFor(folder, 'publish')
         folder.reindexObject()
         for subtopic in sub_topics:
