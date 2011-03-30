@@ -21,8 +21,7 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
     atapi.StringField("losId",
         required=False,
         languageIndependent=True,
-        mode='r',
-        widget=atapi.StringWidget(label=_(u"LOS Id")),
+        widget=atapi.StringWidget(label=_(u"LOS Id"), visible=False),
     ),
     ImageField(
         'image',
@@ -34,8 +33,7 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         'synonyms',
         multiValued=1,
         searchable=True,
-        mode='r',
-        widget=atapi.LinesWidget(label=_(u'Synonyms')),
+        widget=atapi.LinesWidget(label=_(u'Synonyms'), visible=False),
     ),
 ))
 
