@@ -28,21 +28,17 @@ class Renderer(base.Renderer):
     def render(self):
         return xhtml_compress(self._template())
 
-    @property
-    def available(self):
-        return len(self._data())
-
     def LOS(self):
-        return self._data()
-
-    @memoize
-    def _data(self):
         context = aq_inner(self.context)
         portal = getToolByName(context, 'portal_url').getPortalObject()
         if 'tema' not in portal:
             return []
         tema = portal['tema']
-        return tema.getFolderContents()
+        ct = getToolByName(context, 'portal_catalog')
+        return ct.searchResults(
+            portal_type='LOSCategory',
+            path={'query': tema.absolute_url_path(), 'depth':1},
+            sort_on='sortable_title')
 
 
 class AddForm(base.NullAddForm):
