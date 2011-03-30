@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+
+<dl class="portlet portletLOS"
+    tal:define="loses view/LOS"
+    tal:condition="loses"
+    i18n:domain="jarn.kummuner">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span>Tema</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:los tal:repeat="los loses">
+        <dd class="portletItem">
+
+            <a href=""
+               tal:attributes="href los/getURL;
+                               title los/Description">
+                <span tal:replace="los/pretty_title_or_id">
+                A call for proposal
+                </span>
+             </a>
+        </dd>
+    </tal:los>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+</html>
