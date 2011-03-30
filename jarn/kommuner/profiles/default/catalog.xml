@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+  <index name="losId" meta_type="FieldIndex">
+    <indexed_attr value="losId"/>
+  </index>
+  <column value="losId"/>
+</object>
