@@ -18,4 +18,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:importStep
+      name="kommunes-content"
+      title="Kommunes content"
+      description="Import LOS structure."
+      handler=".setuphandlers.setupLOSContent">
+  </genericsetup:importStep>
+
 </configure>
