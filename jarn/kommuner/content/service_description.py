@@ -40,7 +40,7 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
 ))
 
 schemata.finalizeATCTSchema(ServiceDescriptionSchema,
-                            folderish=True, moveDiscussion=False)
+                            folderish=False, moveDiscussion=False)
 
 
 class ServiceDescription(ATCTContent):
