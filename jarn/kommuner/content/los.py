@@ -1,5 +1,3 @@
-"""Definition of the Topic content type
-"""
 from AccessControl import ClassSecurityInfo
 from plone.app.blob.field import ImageField
 from plone.app.folder.bbb import IArchivable
