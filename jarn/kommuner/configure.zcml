@@ -10,6 +10,12 @@
   <include package=".browser" />
   <include package=".content" />
 
+  <subscriber
+    for="jarn.kommuner.interfaces.ServiceDescriptionUpdated"
+    handler=".subscribers.serviceDescriptionUpdated"
+    />
+
+
   <genericsetup:registerProfile
       name="default"
       title="Norwegian Communes"
