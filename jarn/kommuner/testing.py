@@ -19,6 +19,7 @@ class KommunerFixture(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup
         applyProfile(portal, 'jarn.kommuner:default')
+        portal.portal_workflow.setDefaultChain('simple_publication_workflow')
         applyProfile(portal, 'jarn.kommuner:kommunes-content')
 
 
