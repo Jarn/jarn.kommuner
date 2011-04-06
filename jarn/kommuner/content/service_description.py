@@ -5,7 +5,6 @@ from Products.ATContentTypes.content import schemata
 from Products.ATContentTypes.interface import IATContentType
 from Products.ATContentTypes.content.base import ATCTContent
 from Products.ATContentTypes.content.base import ATContentTypeSchema
-from Products.CMFCore.permissions import View
 from zope.interface import implements
 
 from jarn.kommuner.config import PROJECTNAME
@@ -39,8 +38,7 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
 
 ))
 
-schemata.finalizeATCTSchema(ServiceDescriptionSchema,
-                            folderish=True, moveDiscussion=False)
+schemata.finalizeATCTSchema(ServiceDescriptionSchema, moveDiscussion=False)
 
 
 class ServiceDescription(ATCTContent):

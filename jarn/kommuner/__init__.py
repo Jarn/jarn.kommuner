@@ -1,6 +1,5 @@
 from zope.i18nmessageid import MessageFactory
 from jarn.kommuner import config
-
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
 

@@ -36,13 +36,10 @@ setup(name='jarn.kommuner',
       namespace_packages=['jarn', ],
       include_package_data=True,
       zip_safe=False,
-      install_requires=['setuptools',
-                        ],
-      extras_require = {
-          'test': [
-                  'plone.app.testing',
-              ]
-      },
+      install_requires=[
+        'setuptools',
+        'plone.app.testing'
+      ],
       entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]

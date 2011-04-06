@@ -18,6 +18,15 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="kommunes-content"
+      title="nordforsk.policy content setup" 
+      directory="profiles/content"
+      description="Extension profile to configure initial content"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <genericsetup:importStep
       name="kommunes-content"
       title="Kommunes content"

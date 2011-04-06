@@ -4,7 +4,6 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="jarn.kommuner">
 
-  <include package="plone.app.contentmenu" />
 
   <plone:portlet
       name="portlets.LOS"

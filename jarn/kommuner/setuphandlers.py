@@ -7,9 +7,8 @@ from zope.component import getUtility
 
 
 def setupLOSContent(context):
-    if context.readDataFile('content.txt') is None:
+    if context.readDataFile('kommunes-content.txt') is None:
         return
-
     parents = dict()
     synonyms = dict()
 
