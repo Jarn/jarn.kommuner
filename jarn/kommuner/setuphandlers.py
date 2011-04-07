@@ -1,4 +1,5 @@
 import os
+import suds
 import xml.etree.ElementTree as ET
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer

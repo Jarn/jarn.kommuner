@@ -38,7 +38,9 @@ setup(name='jarn.kommuner',
       zip_safe=False,
       install_requires=[
         'setuptools',
-        'plone.app.testing'
+        'suds',
+        'plone.app.testing',
+        'plone.app.registry',
       ],
       entry_points="""
       # -*- entry_points -*-

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<registry>
+
+  <record name="jarn.kommuner.katalogURL">
+    <field type="plone.registry.field.URI">
+      <title>Service Catalog URL</title>
+    </field>
+    <value purge="false">http://www.nasjonaltjenestekatalog.no/ws7/katalog?wsdl</value>
+  </record>
+
+  <record name="jarn.kommuner.katalogUserID">
+    <field type="plone.registry.field.ASCIILine">
+      <title>Katalog User ID</title>
+    </field>
+    <value purge="false"></value>
+  </record>
+
+  <record name="jarn.kommuner.katalogUserPassword">
+    <field type="plone.registry.field.Password">
+      <title>Katalog User Password</title>
+    </field>
+    <value purge="false"></value>
+  </record>
+
+</registry>
