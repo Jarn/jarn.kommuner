@@ -11,6 +11,7 @@ def setupLOSContent(context):
         return
     parents = dict()
     synonyms = dict()
+    synonym_ids = dict()
 
     portal = context.getSite()
     wftool = getToolByName(portal, "portal_workflow")
@@ -52,10 +53,12 @@ def setupLOSContent(context):
 
         if topic_id not in synonyms:
             synonyms[topic_id] = set()
+            synonym_ids[topic_id] = set()
 
         for elem in synonym_elements:
             if elem.find('identifikator').text == word_id:
                 synonyms[topic_id].add(unicode(elem.find('namn').text))
+                synonym_ids[topic_id].add(word_id)
                 break
 
     main_topics = []
@@ -96,10 +99,14 @@ def setupLOSContent(context):
             if parents[subtopic_id] == topic_id:
                 title = unicode(subtopic.find('namn').text)
                 subtopic_synonyms = []
+                subtopic_synonym_ids = []
                 if subtopic_id in synonyms:
                     subtopic_synonyms = synonyms[subtopic_id]
+                if subtopic_id in synonym_ids:
+                    subtopic_synonym_ids = synonym_ids[subtopic_id]
+
                 subfolder_id = folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
-                    title=title, losId=subtopic_id, synonyms=subtopic_synonyms)
+                    title=title, losId=subtopic_id, synonyms=subtopic_synonyms, synonym_ids=subtopic_synonym_ids)
                 subfolder = folder[subfolder_id]
                 wftool.doActionFor(subfolder, 'publish')
                 subfolder.reindexObject()

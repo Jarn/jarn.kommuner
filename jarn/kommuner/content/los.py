@@ -35,6 +35,13 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         #widget=atapi.LinesWidget(label=_(u'Synonyms'), visible=False),
         widget=atapi.LinesWidget(label=_(u'Synonyms')),
     ),
+    atapi.LinesField(
+        'synonym_ids',
+        multiValued=1,
+        searchable=False,
+        #widget=atapi.LinesWidget(label=_(u'Synonym IDs'), visible=False),
+        widget=atapi.LinesWidget(label=_(u'Synonym IDs')),
+    ),
 ))
 
 schemata.finalizeATCTSchema(LOSCategorySchema,
