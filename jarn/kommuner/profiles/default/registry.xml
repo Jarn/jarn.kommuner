@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <registry>
-
   <record name="jarn.kommuner.katalogURL">
     <field type="plone.registry.field.URI">
       <title>Service Catalog URL</title>
