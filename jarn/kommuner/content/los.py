@@ -36,7 +36,7 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         widget=atapi.LinesWidget(label=_(u'Synonyms')),
     ),
     atapi.LinesField(
-        'synonym_ids',
+        'synonymIds',
         multiValued=1,
         searchable=False,
         #widget=atapi.LinesWidget(label=_(u'Synonym IDs'), visible=False),

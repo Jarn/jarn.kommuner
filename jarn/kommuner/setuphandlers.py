@@ -106,7 +106,7 @@ def setupLOSContent(context):
                     subtopic_synonym_ids = synonym_ids[subtopic_id]
 
                 subfolder_id = folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
-                    title=title, losId=subtopic_id, synonyms=subtopic_synonyms, synonym_ids=subtopic_synonym_ids)
+                    title=title, losId=subtopic_id, synonyms=subtopic_synonyms, synonymIds=subtopic_synonym_ids)
                 subfolder = folder[subfolder_id]
                 wftool.doActionFor(subfolder, 'publish')
                 subfolder.reindexObject()

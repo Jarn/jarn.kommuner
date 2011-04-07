@@ -3,5 +3,8 @@
   <index name="losId" meta_type="FieldIndex">
     <indexed_attr value="losId"/>
   </index>
+  <index name="synonymIds" meta_type="KeywordIndex">
+    <indexed_attr value="synonymIds"/>
+  </index>
   <column value="losId"/>
 </object>

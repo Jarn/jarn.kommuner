@@ -26,7 +26,7 @@
 
   <genericsetup:registerProfile
       name="kommunes-content"
-      title="nordforsk.policy content setup" 
+      title="Norwegian Communes content setup"
       directory="profiles/content"
       description="Extension profile to configure initial content"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
