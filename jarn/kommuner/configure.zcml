@@ -24,6 +24,15 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:importStep
+      name="Keywords"
+      title="LOS keywords"
+      description="Import LOS keywords."
+      handler=".setuphandlers.setupKeywords">
+      <depends name="registry"/>
+      
+  </genericsetup:importStep>
+
   <genericsetup:registerProfile
       name="kommunes-content"
       title="Norwegian Communes content setup"

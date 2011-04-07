@@ -22,14 +22,20 @@ def getServiceDescriptionOverview():
 
 def getServiceDescription(sd_id):
     client = getClient()
-    return client.service.hentTjenestebeskrivelser(sd_id)
+    sd = client.service.hentTjenestebeskrivelser(sd_id)
+    if sd:
+        return sd[0]
 
 
 def getActiveServiceDescriptionsOverview():
-    client = getClient()
     overview = getServiceDescriptionOverview()
     active = [item
               for item in overview
               if item['status']=="publisert" and
               item['tjenestebeskrivelseID']['variant']=="NY"]
     return active
+
+
+def getLOSText(psi):
+    client = getClient()
+    return client.service.hentLostekst(psi)

@@ -38,9 +38,14 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
                       'soknadMerknader', 'soknadKlage', 'soknadFrist',
                       'soknadBehandlingstid', 'soknadBehandling',
                       'servicevilkar', 'internOpplysninger']
-        self.assertTrue(set(attributes).issubset(set(dir(sd[0]))))
+        self.assertTrue(set(attributes).issubset(set(dir(sd))))
 
     def test_get_active_sd(self):
         active = sd_client.getActiveServiceDescriptionsOverview()
         active_ids = [x['tjenestebeskrivelseID']['tjenesteID'] for x in active]
         self.assertEqual(len(active_ids), len(set(active_ids)))
+
+    def test_get_los_text(self):
+        self.assertEqual(
+            sd_client.getLOSText(u'http://psi.norge.no/los/ord/alkoholsalg'),
+            'asd')

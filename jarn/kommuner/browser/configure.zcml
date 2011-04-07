@@ -4,6 +4,12 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="jarn.kommuner">
 
+  <browser:view
+    for="*"
+    name="import-sd"
+    class=".sd_import.ImportActiveServiceDescriptionsView"
+    permission="zope2.View"
+    />
 
   <plone:portlet
       name="portlets.LOS"
