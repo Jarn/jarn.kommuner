@@ -89,7 +89,7 @@ def getServiceDescriptionData(context, sd_id):
 
     normalized_word_ids = [ref['psi'].replace('emneord', 'ord') for ref in sd['emneordRefs']]
     topic_refs = ct.searchResults(synonymIds={'query': normalized_word_ids, 'operator': 'or'})
-    keywords = [los_words[word_id] for word_id in normalized_word_ids]
+    keywords = [los_words[word_id] for word_id in normalized_word_ids if word_id in los_words]
 
     return {
         'title': title,
