@@ -1,0 +1,117 @@
+<tal:sd i18n:domain="jarn.kommuner" 
+  tal:define="general options/data/general;
+              application options/data/application;
+              laws options/data/laws;
+              other options/data/other">
+
+  <h2 i18n:translate="">General</h2>
+  <tal:subsection tal:define="content general/htmlDescription"
+    tal:condition="content">
+    <h3 i18n:translate="">Description</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content general/targetGroup"
+    tal:condition="content">
+    <h3 i18n:translate="">Target group</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content general/criteria"
+    tal:condition="content">
+    <h3 i18n:translate="">Criteria</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content general/price"
+    tal:condition="content">
+    <h3 i18n:translate="">Price</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content general/partners"
+    tal:condition="content">
+    <h3 i18n:translate="">Partners</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content general/brochures"
+    tal:condition="content">
+    <h3 i18n:translate="">Brochures</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+
+  <tal:section tal:condition="laws">
+    <h2 i18n:translate="">Laws</h2>
+    <ul>
+    <tal:laws tal:repeat="law laws">
+      <li>
+        <p tal:condition="law/description" tal:replace="structure law/description"/>
+        <a href="" tal:attributes="href law/url" tal:content="law/title"/>
+      </li>
+    </tal:laws>
+    </ul>
+  </tal:section>
+
+  <h2 i18n:translate="">Application</h2>
+  <tal:subsection tal:define="content application/guidelines"
+    tal:condition="content">
+    <h3 i18n:translate="">Guidelines</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/attachment"
+    tal:condition="content">
+    <h3 i18n:translate="">Attachments</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/form"
+    tal:condition="content">
+    <h3 i18n:translate="">Form</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/recipient"
+    tal:condition="content">
+    <h3 i18n:translate="">Recipient</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/notes"
+    tal:condition="content">
+    <h3 i18n:translate="">Notes</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/complaint"
+    tal:condition="content">
+    <h3 i18n:translate="">Complaint</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/deadline"
+    tal:condition="content">
+    <h3 i18n:translate="">Deadline</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/duration"
+    tal:condition="content">
+    <h3 i18n:translate="">Duration</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+  <tal:subsection tal:define="content application/processing"
+    tal:condition="content">
+    <h3 i18n:translate="">Processing</h3>
+    <p tal:replace="structure content"/>
+  </tal:subsection>
+
+  <tal:section tal:condition="other">
+    <h2 i18n:translate="">Other</h2>
+    <tal:subsection tal:define="content other/updated"
+      tal:condition="content">
+      <h3 i18n:translate="">Updated</h3>
+      <p tal:replace="structure content"/>
+    </tal:subsection>
+    <tal:subsection tal:define="content other/valid_from"
+      tal:condition="content">
+      <h3 i18n:translate="">Valid from</h3>
+      <p tal:replace="structure content"/>
+    </tal:subsection>
+    <tal:subsection tal:define="content other/state"
+      tal:condition="content">
+      <h3 i18n:translate="">State</h3>
+      <p tal:replace="structure content"/>
+    </tal:subsection>    
+  </tal:section>
+
+</tal:sd>

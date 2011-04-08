@@ -6,6 +6,10 @@ class ILOSCategory(Interface):
     pass
 
 
+class ILOSWords(Interface):
+    pass
+
+
 class IServiceDescription(Interface):
     pass
 

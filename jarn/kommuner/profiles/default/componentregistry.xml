@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<componentregistry>
+  <utilities>
+    <utility
+      interface="jarn.kommuner.interfaces.ILOSWords"
+      factory="jarn.kommuner.los_words.LOSWords"
+    />
+  </utilities>
+</componentregistry>

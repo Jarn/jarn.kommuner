@@ -35,6 +35,17 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
                 label = _(u'Service description text'),
                 rows = 25),
     ),
+    atapi.ReferenceField(
+        'los_categories',
+        multiValued=True,
+        allowed_types=('LOSCategory',),
+        relationship='sd_los',
+        widget=atapi.ReferenceWidget(
+            label=_(u"LOS categories"),
+        ),
+        languageIndependent=True,
+        required=False,
+    ),
 
 ))
 

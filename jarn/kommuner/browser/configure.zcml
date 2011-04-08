@@ -11,6 +11,13 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    for="*"
+    name="sd-template"
+    template="sd_template.pt"
+    permission="zope.Public"
+  />
+
   <plone:portlet
       name="portlets.LOS"
       interface=".los_portlet.ILOSPortlet"

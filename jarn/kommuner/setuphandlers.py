@@ -1,24 +1,24 @@
 import os
-import suds
 import xml.etree.ElementTree as ET
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 
+from jarn.kommuner.interfaces import ILOSWords
+
 
 def setupKeywords(context):
     if context.readDataFile('kommunes-keywords.txt') is None:
         return
-    portal = context.getSite()
     xml_file = os.path.join(os.path.dirname(__file__), 'data', 'los-alt.xml')
     tree = ET.parse(xml_file)
     groups = tree.findall('//emne-gruppe')
     synonym_group = groups[1]
     synonym_elements = [elem for elem in synonym_group]
-    import pdb; pdb.set_trace( )
+    los_words = getUtility(ILOSWords)
     for elem in synonym_elements:
-        registry['jarn.kommuner.keywords'][elem.find('identifikator').text] = elem.find('namn').text
+        los_words[elem.find('identifikator').text] = elem.find('namn').text
 
 
 def setupLOSContent(context):
