@@ -3,5 +3,6 @@
   <version>1</version>
   <dependencies>
     <dependency>profile-plone.app.registry:default</dependency>
+    <dependency>profile-Products.ATBackRef:default</dependency>
   </dependencies>
 </metadata>

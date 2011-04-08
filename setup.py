@@ -41,6 +41,7 @@ setup(name='jarn.kommuner',
         'suds',
         'plone.app.testing',
         'plone.app.registry',
+        'Products.ATBackRef'
       ],
       entry_points="""
       # -*- entry_points -*-

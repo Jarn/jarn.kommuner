@@ -17,9 +17,13 @@ class KommunerLayer(PloneSandboxLayer):
         # Load ZCML
         import jarn.kommuner
         import plone.app.registry
+        import Products.ATBackRef
+
         self.loadZCML(package=jarn.kommuner)
         self.loadZCML(package=plone.app.registry)
+        self.loadZCML(package=Products.ATBackRef)
         z2.installProduct(app, 'jarn.kommuner')
+        z2.installProduct(app, 'Products.ATBackRef')
 
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup

@@ -3,6 +3,7 @@ from plone.app.blob.field import ImageField
 from plone.app.folder.bbb import IArchivable
 from plone.app.folder.folder import IATUnifiedFolder
 from Products.Archetypes import atapi
+from Products.ATBackRef import backref
 from Products.ATContentTypes.content import schemata
 from Products.ATContentTypes.interface import IATBTreeFolder
 from Products.ATContentTypes.content.folder import ATFolder
@@ -27,6 +28,14 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         widget=atapi.ImageWidget(label=_(u"Image")),
         validators=('isNonEmptyFile'),
         languageIndependent=True
+    ),
+    backref.BackReferenceField(
+        'services',
+        relationship='sd_los',
+        multiValued=True,
+        widget=backref.BackReferenceWidget(
+            label=_(u"Services"),
+        ),
     ),
     atapi.LinesField(
         'synonyms',
