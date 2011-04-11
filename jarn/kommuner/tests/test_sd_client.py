@@ -1,5 +1,7 @@
+import datetime
 import suds
 import unittest2 as unittest
+
 
 from jarn.kommuner import sd_client
 from jarn.kommuner.testing import KOMMUNER_INTEGRATION_TESTING
@@ -45,6 +47,11 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         active = sd_client.getActiveServiceDescriptionsOverview()
         active_ids = [x['tjenestebeskrivelseID']['tjenesteID'] for x in active]
         self.assertEqual(len(active_ids), len(set(active_ids)))
+
+    def test_get_updated_sds(self):
+        since = datetime.datetime(2011,1,1)
+        updated = sd_client.getUpdatedServiceDescriptions(since)
+        self.assertTrue(len(updated) > 0)
 
     def test_get_los_text(self):
         self.assertRaises(suds.WebFault,

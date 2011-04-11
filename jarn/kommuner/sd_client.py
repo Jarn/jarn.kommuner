@@ -32,8 +32,16 @@ def getActiveServiceDescriptionsOverview():
     active = [item
               for item in overview
               if item['status']=="publisert" and
-              item['tjenestebeskrivelseID']['variant']=="NY"]
+              item['tjenestsdebeskrivelseID']['variant']=="NY"]
     return active
+
+
+def getUpdatedServiceDescriptions(since):
+    client = getClient()
+    updated = client.service.hentOversiktEndringer(since)
+    return [item
+            for item in updated
+            if item['status']=="publisert"]
 
 
 def getLOSText(psi):
