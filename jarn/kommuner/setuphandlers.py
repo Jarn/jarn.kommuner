@@ -3,9 +3,29 @@ import xml.etree.ElementTree as ET
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFCore.utils import getToolByName
+from Products.CMFEditions.setuphandlers import DEFAULT_POLICIES
 from zope.component import getUtility
 
 from jarn.kommuner.interfaces import ILOSWords
+
+
+TYPES_TO_VERSION = ['ServiceDescription']
+
+
+def setVersionedTypes(context):
+    portal = context.getSite()
+    portal_repository = getToolByName(portal, 'portal_repository')
+    versionable_types = list(portal_repository.getVersionableContentTypes())
+
+    for type_id in TYPES_TO_VERSION:
+        if type_id not in versionable_types:
+            # use append() to make sure we don't overwrite any
+            # content-types which may already be under version control
+            versionable_types.append(type_id)
+            # Add default versioning policies to the versioned type
+            for policy_id in DEFAULT_POLICIES:
+                portal_repository.addPolicyForContentType(type_id, policy_id)
+    portal_repository.setVersionableContentTypes(versionable_types)
 
 
 def setupKeywords(context):

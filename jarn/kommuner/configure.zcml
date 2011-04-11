@@ -30,7 +30,6 @@
       description="Import LOS keywords."
       handler=".setuphandlers.setupKeywords">
       <depends name="registry"/>
-      
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
