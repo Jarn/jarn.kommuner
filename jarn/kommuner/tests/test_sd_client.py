@@ -30,7 +30,7 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         sd_id = {'land': "NO",
                  'sprak': "no",
                  'tjenesteID': 114,
-                 'variant': "NY",
+                 'variant': None,
                  'versjon': 2}
         sd = sd_client.getServiceDescription(sd_id)
         self.assertTrue(sd)
@@ -44,7 +44,7 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         self.assertTrue(set(attributes).issubset(set(dir(sd))))
 
     def test_get_active_sd(self):
-        active = sd_client.getActiveServiceDescriptionsOverview()
+        active = sd_client.getActiveNorwegianServiceDescriptionsOverview()
         active_ids = [x['tjenestebeskrivelseID']['tjenesteID'] for x in active]
         self.assertEqual(len(active_ids), len(set(active_ids)))
 

@@ -27,7 +27,7 @@ def getServiceDescription(sd_id):
         return sd[0]
 
 
-def getActiveServiceDescriptionsOverview():
+def getActiveNorwegianServiceDescriptionsOverview():
     overview = getServiceDescriptionOverview()
     active = [item
               for item in overview
