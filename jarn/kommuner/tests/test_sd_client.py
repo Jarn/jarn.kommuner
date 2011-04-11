@@ -50,8 +50,10 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
 
     def test_get_updated_sds(self):
         since = datetime.datetime(2011,1,1)
-        updated = sd_client.getUpdatedServiceDescriptions(since)
+        updated = sd_client.getUpdatedNorwegianServiceDescriptions(since)
         self.assertTrue(len(updated) > 0)
+        updated_ids = [x['tjenestebeskrivelseID']['tjenesteID'] for x in updated]
+        self.assertEqual(len(updated_ids), len(set(updated_ids)))
 
     def test_get_los_text(self):
         self.assertRaises(suds.WebFault,

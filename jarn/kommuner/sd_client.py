@@ -27,15 +27,22 @@ def getServiceDescription(sd_id):
         return sd[0]
 
 
-def getActiveNorwegianServiceDescriptionsOverview():
+def getActiveServiceDescriptionsOverview():
     overview = getServiceDescriptionOverview()
     active = [item
               for item in overview
-              if item['status']=="publisert" and
-              item['tjenestebeskrivelseID']['land']=="NO" and
-              item['tjenestebeskrivelseID']['sprak']=="no" and
-              item['tjenestebeskrivelseID']['variant']==None]
+              if item['status']=="publisert"]
     return active
+
+
+def getActiveNorwegianServiceDescriptionsOverview():
+    active = getActiveServiceDescriptionsOverview()
+    no = [item
+          for item in active
+          if item['tjenestebeskrivelseID']['land']=="NO" and
+          item['tjenestebeskrivelseID']['sprak']=="no" and
+          item['tjenestebeskrivelseID']['variant']==None]
+    return no
 
 
 def getUpdatedServiceDescriptions(since):
@@ -44,6 +51,16 @@ def getUpdatedServiceDescriptions(since):
     return [item
             for item in updated
             if item['status']=="publisert"]
+
+
+def getUpdatedNorwegianServiceDescriptions(since):
+    all_lang = getUpdatedServiceDescriptions(since)
+    no = [item
+          for item in all_lang
+          if item['tjenestebeskrivelseID']['land']=="NO" and
+          item['tjenestebeskrivelseID']['sprak']=="no" and
+          item['tjenestebeskrivelseID']['variant']==None]
+    return no
 
 
 def getLOSText(psi):
