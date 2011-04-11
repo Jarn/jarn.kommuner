@@ -11,7 +11,6 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
 
     layer = KOMMUNER_INTEGRATION_TESTING
 
-
     def test_client(self):
         client = sd_client.getClient()
         self.assertTrue(client.sd)
@@ -49,7 +48,7 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         self.assertEqual(len(active_ids), len(set(active_ids)))
 
     def test_get_updated_sds(self):
-        since = datetime.datetime(2011,1,1)
+        since = datetime.datetime(2011, 1, 1)
         updated = sd_client.getUpdatedNorwegianServiceDescriptions(since)
         self.assertTrue(len(updated) > 0)
         updated_ids = [x['tjenestebeskrivelseID']['tjenesteID'] for x in updated]
