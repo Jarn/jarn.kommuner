@@ -32,7 +32,9 @@ def getActiveServiceDescriptionsOverview():
     active = [item
               for item in overview
               if item['status']=="publisert" and
-              item['tjenestsdebeskrivelseID']['variant']=="NY"]
+              item['tjenestebeskrivelseID']['land']=="NO" and
+              item['tjenestebeskrivelseID']['sprak']=="no" and
+              item['tjenestebeskrivelseID']['variant']==None]
     return active
 
 

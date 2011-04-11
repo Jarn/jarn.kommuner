@@ -106,7 +106,7 @@ def getServiceDescriptionData(context, sd_id):
 
 def importActiveServiceDescriptions(context):
     active_sd_ids = [sd['tjenestebeskrivelseID']
-                     for sd in sd_client.getActiveServiceDescriptionsOverview()]
+                     for sd in sd_client.getActiveNorwegianServiceDescriptionsOverview()]
     id_normalizer = getUtility(IIDNormalizer)
     for sd_id in active_sd_ids:
         data = getServiceDescriptionData(context, sd_id)
