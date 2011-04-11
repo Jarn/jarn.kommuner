@@ -1,3 +1,4 @@
+import suds
 import unittest2 as unittest
 
 from jarn.kommuner import sd_client
@@ -46,6 +47,5 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         self.assertEqual(len(active_ids), len(set(active_ids)))
 
     def test_get_los_text(self):
-        self.assertEqual(
-            sd_client.getLOSText(u'http://psi.norge.no/los/ord/alkoholsalg'),
-            'asd')
+        self.assertRaises(suds.WebFault,
+            sd_client.getLOSText, u'http://psi.norge.no/los/ord/alkoholsalg')

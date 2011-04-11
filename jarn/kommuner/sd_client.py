@@ -37,5 +37,8 @@ def getActiveServiceDescriptionsOverview():
 
 
 def getLOSText(psi):
+    # XXX: Not working
+    # Throws:
+    # WebFault: Server raised fault: 'com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'LT.oppdatert' in 'field list''
     client = getClient()
     return client.service.hentLostekst(psi)
