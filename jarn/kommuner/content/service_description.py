@@ -18,7 +18,6 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
     atapi.TextField('nationalText',
         required=False,
         searchable=False,
-        mode='r',
         storage = AnnotationStorage(migrate=True),
         validators = ('isTidyHtmlWithCleanup', ),
         default_output_type = 'text/x-html-safe',
@@ -55,7 +54,6 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
         'serviceId',
         required=False,
         searchable=False,
-        mode='r',
         storage = AnnotationStorage(migrate=True),
         validators = ('isInt', ),
         widget = atapi.IntegerWidget(
