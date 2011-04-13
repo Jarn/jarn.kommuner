@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="jarn.kommuner">
     
@@ -15,6 +16,21 @@
     handler=".subscribers.serviceDescriptionUpdated"
     />
 
+
+  <monkey:patch
+      description="Security patch for BackReferenceField"
+      class="Products.ATBackRef.backref.BackReferenceField"
+      original="get"
+      replacement=".reference_patch.backreferenceFieldGet"
+      />
+
+  <monkey:patch
+      description="Security patch for ReferenceField"
+      class="Products.Archetypes.Field.ReferenceField"
+      original="get"
+      replacement=".reference_patch.referenceFieldGet"
+      preserveOriginal="true"
+      />
 
   <genericsetup:registerProfile
       name="default"
