@@ -12,11 +12,13 @@ from jarn.kommuner.interfaces import IServiceDescription
 from jarn.kommuner.vocabularies import losCategoriesRefs
 from jarn.kommuner import kommunerMessageFactory as _
 
+
 ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
 
     atapi.TextField('nationalText',
         required=False,
         searchable=False,
+        mode='r',
         storage = AnnotationStorage(migrate=True),
         validators = ('isTidyHtmlWithCleanup', ),
         default_output_type = 'text/x-html-safe',
@@ -39,7 +41,7 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
     atapi.ReferenceField(
         'los_categories',
         multiValued=True,
-        allowed_types=('LOSCategory',),
+        allowed_types=('LOSCategory', ),
         relationship='sd_los',
         vocabulary = 'losCategoriesVocab',
         widget=atapi.ReferenceWidget(
@@ -53,6 +55,7 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
         'serviceId',
         required=False,
         searchable=False,
+        mode='r',
         storage = AnnotationStorage(migrate=True),
         validators = ('isInt', ),
         widget = atapi.IntegerWidget(
