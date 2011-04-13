@@ -85,7 +85,7 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         folder = portal['test-folder']
         old_national_text = getFileData('114-ver-1.html')
         custom_national_text = getFileData('114-ver-1-custom.html')
-        new_national_text = getFileData('114-ver-2.html')
+        new_national_text = getFileData('114-ver-2.html').decode('utf-8')
         folder.invokeFactory('ServiceDescription', 'sd',
                              title="Test",
                              nationalText=old_national_text,
