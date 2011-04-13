@@ -19,6 +19,13 @@
     />
 
   <browser:page
+    for="jarn.kommuner.interfaces.IServiceDescription"
+    name="base_view"
+    template="sd.pt"
+    permission="zope2.View"
+  />
+
+  <browser:page
     for="*"
     name="sd-template"
     template="sd_template.pt"
