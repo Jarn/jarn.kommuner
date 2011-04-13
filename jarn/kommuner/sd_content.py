@@ -128,7 +128,7 @@ def importActiveServiceDescriptions(context):
         los_categories = [brain.getObject() for brain in data['topic_refs']]
         context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
             serviceId=internal_id, title=data['title'], description=data['description'],
-            nationalText=text, los_categories=los_categories, subject=data['keywords'])
+            nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
     registry = getUtility(IRegistry)
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
 
@@ -154,7 +154,7 @@ def updateActiveServiceDescriptions(context):
             internal_id = sd_id['tjenesteID']
             context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
                 serviceId=internal_id, title=data['title'], description=data['description'],
-                nationalText=text, los_categories=los_categories, subject=data['keywords'])
+                nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
         else:
             sd = sd[0].getObject()
             ev = ServiceDescriptionUpdated(sd, text, data)
