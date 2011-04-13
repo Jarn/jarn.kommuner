@@ -7,8 +7,15 @@
   <browser:view
     for="*"
     name="import-sd"
-    class=".sd_import.ImportActiveServiceDescriptionsView"
-    permission="zope2.View"
+    class=".maintenance.ImportActiveServiceDescriptionsView"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:view
+    for="*"
+    name="update-sd"
+    class=".maintenance.UpdateActiveServiceDescriptionsView"
+    permission="cmf.ManagePortal"
     />
 
   <browser:page

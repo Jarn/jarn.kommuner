@@ -47,6 +47,17 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
         required=False,
     ),
 
+    atapi.IntegerField(
+        'serviceId',
+        required=False,
+        searchable=False,
+        storage = AnnotationStorage(migrate=True),
+        validators = ('isInt', ),
+        widget = atapi.IntegerWidget(
+            description = '',
+            label = _(u'Service Id')),
+    ),
+
 ))
 
 schemata.finalizeATCTSchema(ServiceDescriptionSchema, moveDiscussion=False)

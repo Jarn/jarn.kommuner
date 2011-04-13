@@ -1,10 +1,16 @@
+from Acquisition import aq_parent
 import re, htmlentitydefs
+from datetime import datetime
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.registry.interfaces import IRegistry
+from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
+from zope.event import notify
 
 from jarn.kommuner import sd_client
 from jarn.kommuner.interfaces import ILOSWords
+from jarn.kommuner.interfaces import ServiceDescriptionUpdated
 
 
 def unescape(text):
@@ -105,13 +111,51 @@ def getServiceDescriptionData(context, sd_id):
 
 
 def importActiveServiceDescriptions(context):
+    ct = getToolByName(context, 'portal_catalog')
+    existing = ct.unrestrictedSearchResults(portal_type='ServiceDescription')
+    for brain in list(existing):
+        obj = brain.getObject()
+        parent = aq_parent(obj)
+        del parent[obj.id]
+
     active_sd_ids = [sd['tjenestebeskrivelseID']
                      for sd in sd_client.getActiveNorwegianServiceDescriptionsOverview()]
     id_normalizer = getUtility(IIDNormalizer)
     for sd_id in active_sd_ids:
+        internal_id = sd_id['tjenesteID']
         data = getServiceDescriptionData(context, sd_id)
         text = context.restrictedTraverse('@@sd-template')(data=data)
         los_categories = [brain.getObject() for brain in data['topic_refs']]
         context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
-            title=data['title'], description=data['description'],
+            serviceId=internal_id, title=data['title'], description=data['description'],
             nationalText=text, los_categories=los_categories, subject=data['keywords'])
+    registry = getUtility(IRegistry)
+    registry['jarn.kommuner.lastUpdate'] = datetime.now()
+
+
+def updateActiveServiceDescriptions(context):
+    ct = getToolByName(context, 'portal_catalog')
+    registry = getUtility(IRegistry)
+    id_normalizer = getUtility(IIDNormalizer)
+    last_update = registry['jarn.kommuner.lastUpdate']
+    registry['jarn.kommuner.lastUpdate'] = datetime.now()
+    updated_ids = [
+        sd['tjenestebeskrivelseID']
+        for sd in sd_client.getUpdatedNorwegianServiceDescriptions(last_update)]
+
+    for sd_id in updated_ids:
+        data = getServiceDescriptionData(context, sd_id)
+        text = context.restrictedTraverse('@@sd-template')(data=data)
+        los_categories = [brain.getObject() for brain in data['topic_refs']]
+
+        sd = ct.unrestrictedSearchResults(serviceId=sd_id['tjenesteID'])
+
+        if not sd:
+            internal_id = sd_id['tjenesteID']
+            context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
+                serviceId=internal_id, title=data['title'], description=data['description'],
+                nationalText=text, los_categories=los_categories, subject=data['keywords'])
+        else:
+            sd = sd[0].getObject()
+            ev = ServiceDescriptionUpdated(sd, text, data)
+            notify(ev)

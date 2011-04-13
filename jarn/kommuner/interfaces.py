@@ -22,6 +22,7 @@ class IServiceDescriptionUpdated(IObjectEvent):
 
 class ServiceDescriptionUpdated(object):
 
-    def __init__(self, obj, updated_text):
+    def __init__(self, obj, updated_text, data={}):
         self.object = obj
         self.updated_text = updated_text
+        self.data = data

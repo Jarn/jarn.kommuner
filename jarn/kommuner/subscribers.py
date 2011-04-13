@@ -7,7 +7,9 @@ from jarn.kommuner.dmp import diff_match_patch
 def serviceDescriptionUpdated(event):
     context = event.object
     updated_text = event.updated_text
-    old_national_text = context.getRawNationalText()
+    data = event.data
+    old_national_text = context.getRawNationalText().decode('utf-8')
+    old_text = context.getRawText().decode('utf-8')
 
     parent_folder = aq_parent(context)
     policy = ICheckinCheckoutPolicy(context)
@@ -15,7 +17,7 @@ def serviceDescriptionUpdated(event):
     context.reindexObject('review_state')
 
     dmp = diff_match_patch()
-    current_patch = dmp.patch_make(old_national_text, context.getRawText())
+    current_patch = dmp.patch_make(old_national_text, old_text)
     updated_text_patch = dmp.patch_make(old_national_text, updated_text)
     final_patch = current_patch + updated_text_patch
     new_text, success = dmp.patch_apply(final_patch, old_national_text)
@@ -23,5 +25,8 @@ def serviceDescriptionUpdated(event):
         # XXX
         # We need to handle the possibility of patching failing
         return
-
+    wc.setNationalText(updated_text)
     wc.setText(new_text)
+    if data:
+        wc.setTitle(data['title'])
+        wc.setDescription(data['description'])

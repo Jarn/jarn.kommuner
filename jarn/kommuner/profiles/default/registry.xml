@@ -21,5 +21,19 @@
     <value purge="false"></value>
   </record>
 
+  <record name="jarn.kommuner.katalogUserPassword">
+    <field type="plone.registry.field.Password">
+      <title>Katalog User Password</title>
+    </field>
+    <value purge="false"></value>
+  </record>
+
+  <record name="jarn.kommuner.lastUpdate">
+    <field type="plone.registry.field.Datetime">
+      <title>Last update of Service Descriptions</title>
+    </field>
+    <value purge="false"></value>
+  </record>
+
 
 </registry>

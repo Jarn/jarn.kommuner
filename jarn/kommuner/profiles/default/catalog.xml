@@ -6,5 +6,9 @@
   <index name="synonymIds" meta_type="KeywordIndex">
     <indexed_attr value="synonymIds"/>
   </index>
+  <index name="serviceId" meta_type="FieldIndex">
+    <indexed_attr value="getServiceId"/>
+  </index>
+
   <column value="losId"/>
 </object>
