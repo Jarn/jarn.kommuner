@@ -9,6 +9,7 @@ from zope.interface import implements
 
 from jarn.kommuner.config import PROJECTNAME
 from jarn.kommuner.interfaces import IServiceDescription
+from jarn.kommuner.vocabularies import losCategoriesRefs
 from jarn.kommuner import kommunerMessageFactory as _
 
 ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
@@ -40,6 +41,7 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
         multiValued=True,
         allowed_types=('LOSCategory',),
         relationship='sd_los',
+        vocabulary = 'losCategoriesVocab',
         widget=atapi.ReferenceWidget(
             label=_(u"LOS categories"),
         ),
@@ -75,5 +77,7 @@ class ServiceDescription(ATCTContent):
     schema = ServiceDescriptionSchema
     security = ClassSecurityInfo()
 
+    def losCategoriesVocab(self):
+        return losCategoriesRefs(self)
 
 atapi.registerType(ServiceDescription, PROJECTNAME)

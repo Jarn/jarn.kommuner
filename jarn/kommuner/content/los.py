@@ -15,6 +15,7 @@ from jarn.kommuner.config import PROJECTNAME
 from jarn.kommuner.interfaces import ILOSCategory
 from jarn.kommuner import kommunerMessageFactory as _
 
+
 LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
 
     atapi.StringField("losId",
@@ -33,6 +34,7 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         'services',
         relationship='sd_los',
         multiValued=True,
+        mode='r',
         widget=backref.BackReferenceWidget(
             label=_(u"Services"),
         ),
