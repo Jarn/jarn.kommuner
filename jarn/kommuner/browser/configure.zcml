@@ -19,11 +19,19 @@
     />
 
   <browser:page
+    for="jarn.kommuner.interfaces.ILOSCategory"
+    name="base_view"
+    template="los.pt"
+    permission="zope2.View"
+  />
+
+  <browser:page
     for="jarn.kommuner.interfaces.IServiceDescription"
     name="base_view"
     template="sd.pt"
     permission="zope2.View"
   />
+
 
   <browser:page
     for="jarn.kommuner.interfaces.IServiceDescription"
