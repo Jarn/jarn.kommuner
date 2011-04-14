@@ -34,7 +34,6 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         'services',
         relationship='sd_los',
         multiValued=True,
-        mode='r',
         widget=backref.BackReferenceWidget(
             label=_(u"Services"),
         ),
@@ -54,6 +53,14 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         widget=atapi.LinesWidget(label=_(u'Synonym IDs')),
     ),
 ))
+LOSCategorySchema['losId'].widget.visible = \
+    {"edit": "invisible", "view": "visible"}
+LOSCategorySchema['services'].widget.visible = \
+    {"edit": "invisible", "view": "visible"}
+LOSCategorySchema['synonyms'].widget.visible = \
+    {"edit": "invisible", "view": "visible"}
+LOSCategorySchema['synonymIds'].widget.visible = \
+    {"edit": "invisible", "view": "visible"}
 
 schemata.finalizeATCTSchema(LOSCategorySchema,
                             folderish=True, moveDiscussion=False)
