@@ -20,7 +20,7 @@
           <li>
             <a  
               tal:attributes="href subcategory/absolute_url">
-              <div>
+              <div tal:condition="context/getImage|nothing">>
                 <img tal:replace="structure python:subcategory.tag(scale='mini', css_class='newsImage')"/>
               </div>
 
