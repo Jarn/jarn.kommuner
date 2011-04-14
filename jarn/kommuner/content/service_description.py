@@ -63,6 +63,10 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
 
 ))
 
+ServiceDescriptionSchema['nationalText'].widget.visible = \
+    {"edit": "invisible", "view": "visible"}
+ServiceDescriptionSchema['serviceId'].widget.visible = \
+    {"edit": "invisible", "view": "visible"}
 schemata.finalizeATCTSchema(ServiceDescriptionSchema, moveDiscussion=False)
 
 
