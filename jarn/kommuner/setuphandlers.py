@@ -13,6 +13,8 @@ TYPES_TO_VERSION = ['ServiceDescription']
 
 
 def setVersionedTypes(context):
+    if context.readDataFile('versioning.txt') is None:
+        return
     portal = context.getSite()
     portal_repository = getToolByName(portal, 'portal_repository')
     versionable_types = list(portal_repository.getVersionableContentTypes())

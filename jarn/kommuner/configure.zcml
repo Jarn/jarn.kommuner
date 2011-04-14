@@ -48,6 +48,14 @@
       <depends name="registry"/>
   </genericsetup:importStep>
 
+  <genericsetup:importStep
+      name="Versioning"
+      title="Versioning"
+      description="Import LOS keywords."
+      handler=".setuphandlers.setVersionedTypes">
+      <depends name="types"/>
+  </genericsetup:importStep>
+
   <genericsetup:registerProfile
       name="kommunes-content"
       title="Norwegian Communes content setup"
