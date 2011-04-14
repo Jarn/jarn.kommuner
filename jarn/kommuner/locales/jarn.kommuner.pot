@@ -1,0 +1,176 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-04-14 11:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: jarn.kommuner\n"
+
+#: ./profiles/default/types/LOSCategory.xml
+msgid "A LOS Category"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "A portlet which shows the main LOS topics."
+msgstr ""
+
+#: ./profiles/default/types/ServiceDescription.xml
+msgid "A service description"
+msgstr ""
+
+#: ./browser/sd_template.pt:51
+msgid "Application"
+msgstr ""
+
+#: ./browser/sd_template.pt:59
+msgid "Attachments"
+msgstr ""
+
+#: ./browser/sd_template.pt:35
+msgid "Brochures"
+msgstr ""
+
+#: ./browser/sd_template.pt:79
+msgid "Complaint"
+msgstr ""
+
+#: ./browser/sd_template.pt:20
+msgid "Criteria"
+msgstr ""
+
+#: ./browser/sd_template.pt:84
+msgid "Deadline"
+msgstr ""
+
+#: ./browser/sd_template.pt:10
+msgid "Description"
+msgstr ""
+
+#: ./browser/sd_template.pt:89
+msgid "Duration"
+msgstr ""
+
+#: ./browser/sd_template.pt:64
+msgid "Form"
+msgstr ""
+
+#: ./browser/sd_template.pt:7
+msgid "General"
+msgstr ""
+
+#: ./browser/sd_template.pt:54
+msgid "Guidelines"
+msgstr ""
+
+#: ./content/los.py:29
+msgid "Image"
+msgstr ""
+
+#: ./browser/los.pt:18
+msgid "LOS Categories"
+msgstr ""
+
+#: ./profiles/default/types/LOSCategory.xml
+msgid "LOS Category"
+msgstr ""
+
+#: ./content/los.py:25
+msgid "LOS Id"
+msgstr ""
+
+#: ./content/service_description.py:47
+msgid "LOS categories"
+msgstr ""
+
+#: ./browser/los_portlet.py:21
+msgid "LOS portlet"
+msgstr ""
+
+#: ./browser/sd_template.pt:40
+msgid "Laws"
+msgstr ""
+
+#: ./content/service_description.py:26
+msgid "National catalog text"
+msgstr ""
+
+#: ./browser/sd_template.pt:74
+msgid "Notes"
+msgstr ""
+
+#: ./browser/sd_template.pt:99
+msgid "Other"
+msgstr ""
+
+#: ./browser/sd_template.pt:30
+msgid "Partners"
+msgstr ""
+
+#: ./browser/sd_template.pt:25
+msgid "Price"
+msgstr ""
+
+#: ./browser/sd_template.pt:94
+msgid "Processing"
+msgstr ""
+
+#: ./browser/sd_template.pt:69
+msgid "Recipient"
+msgstr ""
+
+#: ./profiles/default/types/ServiceDescription.xml
+msgid "Service Description"
+msgstr ""
+
+#: ./content/service_description.py:61
+msgid "Service Id"
+msgstr ""
+
+#: ./content/service_description.py:37
+msgid "Service description text"
+msgstr ""
+
+#: ./browser/los.pt:33
+#: ./content/los.py:38
+msgid "Services"
+msgstr ""
+
+#: ./browser/sd_template.pt:112
+msgid "State"
+msgstr ""
+
+#: ./content/los.py:53
+msgid "Synonym IDs"
+msgstr ""
+
+#: ./content/los.py:46
+msgid "Synonyms"
+msgstr ""
+
+#: ./browser/sd_template.pt:15
+msgid "Target group"
+msgstr ""
+
+#: ./profiles/default/portlets.xml
+msgid "Tema Portlet"
+msgstr ""
+
+#: ./browser/sd_template.pt:102
+msgid "Updated"
+msgstr ""
+
+#: ./browser/sd_template.pt:107
+msgid "Valid from"
+msgstr ""
+
