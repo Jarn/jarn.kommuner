@@ -49,8 +49,8 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         'synonymIds',
         multiValued=1,
         searchable=False,
-        #widget=atapi.LinesWidget(label=_(u'Synonym IDs'), visible=False),
-        widget=atapi.LinesWidget(label=_(u'Synonym IDs')),
+        #widget=atapi.LinesWidget(label=_(u'Synonym Ids'), visible=False),
+        widget=atapi.LinesWidget(label=_(u'Synonym Ids')),
     ),
 ))
 LOSCategorySchema['losId'].widget.visible = \

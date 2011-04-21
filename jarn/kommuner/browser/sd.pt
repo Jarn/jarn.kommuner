@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="jarn.kommuner">
 <body>
 
 <metal:content-core fill-slot="content-core">
@@ -12,7 +12,7 @@
       <metal:field use-macro="python:context.widget('text', mode='view')">
           Body text
       </metal:field>    
-      <h2 i18n:translate="">LOS categories</h2>
+      <h2 i18n:translate="">LOS Categories</h2>
       <metal:field use-macro="python:context.widget('los_categories', mode='view')">
           Body text
       </metal:field>    
