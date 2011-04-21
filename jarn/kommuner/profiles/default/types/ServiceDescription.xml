@@ -26,7 +26,8 @@
     <permission value="View" />
   </action>
   <action title="National Text" action_id="national" category="object" condition_expr=""
-    url_expr="string:${object_url}/@@national_text_view" visible="True">
+    url_expr="string:${object_url}/@@national_text_view" visible="True"
+    i18n:domain="plone" i18n:attributes="title">
     <permission value="Modify portal content" />
   </action>
   <action title="Edit" action_id="edit" category="object" condition_expr=""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-14 11:03+0000\n"
+"POT-Creation-Date: 2011-04-21 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,6 +75,7 @@ msgid "Image"
 msgstr "Bilde"
 
 #: ./browser/los.pt:18
+#: ./browser/sd.pt:15
 msgid "LOS Categories"
 msgstr "LOS kategorier"
 
@@ -129,10 +130,6 @@ msgstr "Mottaker"
 #: ./profiles/default/types/ServiceDescription.xml
 msgid "Service Description"
 msgstr "Tjenestebeskrivelse"
-
-#: ./profiles/default/types/ServiceDescription.xml
-msgid "National Text"
-msgstr "Nasjonal Tekst"
 
 #: ./content/service_description.py:61
 msgid "Service Id"
