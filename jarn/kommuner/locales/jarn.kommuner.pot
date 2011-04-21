@@ -133,6 +133,10 @@ msgstr ""
 msgid "Service Description"
 msgstr ""
 
+#: ./profiles/default/types/ServiceDescription.xml
+msgid "National Text"
+msgstr ""
+
 #: ./content/service_description.py:61
 msgid "Service Id"
 msgstr ""
@@ -151,7 +155,7 @@ msgid "State"
 msgstr ""
 
 #: ./content/los.py:53
-msgid "Synonym IDs"
+msgid "Synonym Ids"
 msgstr ""
 
 #: ./content/los.py:46

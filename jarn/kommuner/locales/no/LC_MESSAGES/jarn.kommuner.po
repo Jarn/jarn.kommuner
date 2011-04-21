@@ -36,7 +36,7 @@ msgstr "Vedlegg"
 
 #: ./browser/sd_template.pt:35
 msgid "Brochures"
-msgstr "Brosjyrer"
+msgstr "Brosjyrer/dokumenter"
 
 #: ./browser/sd_template.pt:79
 msgid "Complaint"
@@ -44,7 +44,7 @@ msgstr "Klage"
 
 #: ./browser/sd_template.pt:20
 msgid "Criteria"
-msgstr "Vilkår"
+msgstr "Kriterier/vilkår"
 
 #: ./browser/sd_template.pt:84
 msgid "Deadline"
@@ -80,7 +80,7 @@ msgstr "LOS kategorier"
 
 #: ./profiles/default/types/LOSCategory.xml
 msgid "LOS Category"
-msgstr "LOS katergori"
+msgstr "LOS kategori"
 
 #: ./content/los.py:25
 msgid "LOS Id"
@@ -130,6 +130,10 @@ msgstr "Mottaker"
 msgid "Service Description"
 msgstr "Tjenestebeskrivelse"
 
+#: ./profiles/default/types/ServiceDescription.xml
+msgid "National Text"
+msgstr "Nasjonal Tekst"
+
 #: ./content/service_description.py:61
 msgid "Service Id"
 msgstr ""
@@ -145,10 +149,10 @@ msgstr "Tjenester"
 
 #: ./browser/sd_template.pt:112
 msgid "State"
-msgstr ""
+msgstr "Livssituasjon"
 
 #: ./content/los.py:53
-msgid "Synonym IDs"
+msgid "Synonym Ids"
 msgstr ""
 
 #: ./content/los.py:46
