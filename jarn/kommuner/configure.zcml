@@ -5,8 +5,9 @@
     xmlns:monkey="http://namespaces.plone.org/monkey"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="jarn.kommuner">
-    
+
   <five:registerPackage package="." initialize=".initialize" />
+  <i18n:registerTranslations directory="locales"/>
 
   <include package=".browser" />
   <include package=".content" />
@@ -15,7 +16,6 @@
     for="jarn.kommuner.interfaces.ServiceDescriptionUpdated"
     handler=".subscribers.serviceDescriptionUpdated"
     />
-
 
   <monkey:patch
       description="Security patch for BackReferenceField"
