@@ -17,7 +17,7 @@ def setupCatalogUpdateUser(context):
         return
     portal = context.getSite()
     portal._addRole('CatalogUpdater')
-    portal.acl_users.userFolderAddUser('updater', 'updater', ('CatalogUpdater',), ())
+    portal.acl_users.userFolderAddUser('updater', '2Vy8XPVj', ('CatalogUpdater',), ())
 
 
 def setVersionedTypes(context):
