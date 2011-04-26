@@ -1,6 +1,9 @@
+import logging
 from Products.Five.browser import BrowserView
 
 from jarn.kommuner import sd_content
+
+logger = logging.getLogger('jarn.kommuner')
 
 
 class ImportActiveServiceDescriptionsView(BrowserView):
@@ -12,6 +15,6 @@ class ImportActiveServiceDescriptionsView(BrowserView):
 class UpdateActiveServiceDescriptionsView(BrowserView):
 
     def __call__(self):
-        print "KAKA"
+        logger.info("clockserver ping")
         return
         sd_content.updateActiveServiceDescriptions(self.context)
