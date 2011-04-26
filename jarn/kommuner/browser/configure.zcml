@@ -13,9 +13,9 @@
 
   <browser:view
     for="*"
-    name="update-sd"
+    name="update-catalog"
     class=".maintenance.UpdateActiveServiceDescriptionsView"
-    permission="cmf.ManagePortal"
+    permission="zope2.View"
     />
 
   <browser:page

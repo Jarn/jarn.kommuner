@@ -12,6 +12,14 @@ from jarn.kommuner.interfaces import ILOSWords
 TYPES_TO_VERSION = ['ServiceDescription']
 
 
+def setupCatalogUpdateUser(context):
+    if context.readDataFile('catalogupdater.txt') is None:
+        return
+    portal = context.getSite()
+    portal._addRole('CatalogUpdater')
+    portal.acl_users.userFolderAddUser('updater', 'updater', ('CatalogUpdater',), ())
+
+
 def setVersionedTypes(context):
     if context.readDataFile('versioning.txt') is None:
         return

@@ -14,5 +14,9 @@
       <role name="Owner" />
     </permission>
 
+    <permission name="jarn.kommuner: Update Service Catalog" acquire="False">
+        <role name="CatalogUpdater"/>
+    </permission>
+
   </permissions>
 </rolemap>

@@ -12,4 +12,6 @@ class ImportActiveServiceDescriptionsView(BrowserView):
 class UpdateActiveServiceDescriptionsView(BrowserView):
 
     def __call__(self):
+        print "KAKA"
+        return
         sd_content.updateActiveServiceDescriptions(self.context)

@@ -41,6 +41,13 @@
       />
 
   <genericsetup:importStep
+      name="CatalogUpdater"
+      title="Catalog Updater"
+      description="Setup user to do catalog updates."
+      handler=".setuphandlers.setupCatalogUpdateUser">
+  </genericsetup:importStep>
+
+  <genericsetup:importStep
       name="Keywords"
       title="LOS keywords"
       description="Import LOS keywords."
