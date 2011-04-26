@@ -2,21 +2,11 @@ from zope.i18nmessageid import MessageFactory
 from jarn.kommuner import config
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
-from Products.CMFCore.permissions import setDefaultRoles
-from AccessControl.SecurityInfo import ModuleSecurityInfo
 
 kommunerMessageFactory = MessageFactory('jarn.kommuner')
 
-security = ModuleSecurityInfo('jarn.kommuner')
-security.declarePublic('Update Service Catalog')
-updatePermission = 'jarn.kommuner: Update Service Catalog'
-setDefaultRoles(updatePermission, ())
-
 
 def initialize(context):
-
-
-
     content_types, constructors, ftis = atapi.process_types(
         atapi.listTypes(config.PROJECTNAME),
         config.PROJECTNAME)
