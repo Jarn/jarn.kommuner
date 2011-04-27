@@ -23,8 +23,8 @@ class UpdateActiveServiceDescriptionsView(BrowserView):
         last_update = registry['jarn.kommuner.lastUpdate']
         now = datetime.now()
         if last_update is None:
-            logger.error('Error checking for updated national catalog updates, please import them.')
+            logger.error('Error checking for national catalog updates, please import the catalog first.')
             return
         if (now-last_update).days > 1:
-            logger.info('Checking for updated national catalog updates')
+            logger.info('Checking for national catalog updates')
             sd_content.updateActiveServiceDescriptions(self.context)
