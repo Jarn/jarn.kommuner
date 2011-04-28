@@ -11,7 +11,12 @@
   <property name="factory">addLOSCategory</property>
   <property name="immediate_view">atct_edit</property>
   <property name="global_allow">True</property>
-  <property name="filter_content_types">False</property>
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types" purge="False">
+    <element value="LOSCategory"/>
+    <element value="Document"/>
+    <element value="Image"/>
+  </property>
   <property name="allow_discussion">False</property>
   <property name="default_view">base_view</property>
   <property name="view_methods">
