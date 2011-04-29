@@ -28,18 +28,4 @@
     <value purge="false"></value>
   </record>
 
-  <record name="jarn.kommuner.lastNotified">
-    <field type="plone.registry.field.Datetime">
-      <title>Last notification of Service Description updates</title>
-    </field>
-    <value purge="false"></value>
-  </record>
-
-  <record name="jarn.kommuner.notifyEmail">
-    <field type="plone.registry.field.ASCIILine">
-      <title>Email address notifications are sent to</title>
-    </field>
-    <value purge="false"></value>
-  </record>
-
 </registry>

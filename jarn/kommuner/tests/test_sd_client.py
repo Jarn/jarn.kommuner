@@ -2,6 +2,8 @@ import datetime
 import suds
 import unittest2 as unittest
 
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 from jarn.kommuner import sd_client
 from jarn.kommuner.testing import KOMMUNER_INTEGRATION_TESTING
@@ -10,6 +12,13 @@ from jarn.kommuner.testing import KOMMUNER_INTEGRATION_TESTING
 class UpdateServiceDescriptionTest(unittest.TestCase):
 
     layer = KOMMUNER_INTEGRATION_TESTING
+
+    def test_registry_entries(self):
+        registry = getUtility(IRegistry)
+        self.assertTrue('jarn.kommuner.katalogURL' in registry)
+        self.assertTrue('jarn.kommuner.katalogUserID' in registry)
+        self.assertTrue('jarn.kommuner.katalogUserPassword' in registry)
+        self.assertTrue('jarn.kommuner.lastUpdate' in registry)
 
     def test_client(self):
         client = sd_client.getClient()
