@@ -1,3 +1,4 @@
+from persistent.list import PersistentList
 from plone.registry.interfaces import IRegistry
 from plone.app.testing import applyProfile
 from plone.app.testing import IntegrationTesting, FunctionalTesting
@@ -6,7 +7,35 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import PLONE_FIXTURE
 from plone.testing import z2
+#from Products.CMFPlone.tests.utils import MockMailHost
+from Products.MailHost.interfaces import IMailHost
+from Products.MailHost.MailHost import MailBase
+from Products.MailHost.MailHost import _mungeHeaders
 from zope.component import getUtility
+from zope.component import getSiteManager
+
+
+class MockMailHost(MailBase):
+    """A MailHost that collects messages instead of sending them.
+    """
+
+    def __init__(self, id):
+        self.reset()
+
+    def reset(self):
+        self.messages = PersistentList()
+
+    def _send(self, mfrom, mto, messageText, immediate=False):
+        """ Send the message """
+        self.messages.append(messageText)
+
+    def send(self, messageText, mto=None, mfrom=None, subject=None,
+             encode=None, immediate=False, charset=None, msg_type=None):
+        messageText, mto, mfrom = _mungeHeaders(messageText,
+                                                mto, mfrom, subject,
+                                                charset=charset,
+                                                msg_type=msg_type)
+        self.messages.append(messageText)
 
 
 class KommunerLayer(PloneSandboxLayer):
@@ -46,6 +75,12 @@ class KommunerLayer(PloneSandboxLayer):
         registry['jarn.kommuner.katalogUserID'] = '29811'
         registry['jarn.kommuner.katalogUserPassword'] = u'ge_77_k'
 
+        # Setup mailhost
+        portal.MailHost = mailhost = MockMailHost('MailHost')
+        sm = getSiteManager(context=portal)
+        sm.unregisterUtility(provided=IMailHost)
+        sm.registerUtility(mailhost, provided=IMailHost)
+        portal.manage_changeProperties(email_from_address='info@jarn.com')
 
 KOMMUNER_FIXTURE = KommunerLayer()
 KOMMUNER_INTEGRATION_TESTING = IntegrationTesting(bases=(KOMMUNER_FIXTURE, ),

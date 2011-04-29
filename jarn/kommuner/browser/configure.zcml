@@ -52,12 +52,19 @@
     permission="zope.Public"
   />
 
+  <browser:page
+    for="*"
+    name="updated_sd_mail"
+    template="updated_sd_mail_template.pt"
+    permission="zope.Public"
+  />
+
   <plone:portlet
       name="portlets.LOS"
       interface=".los_portlet.ILOSPortlet"
       assignment=".los_portlet.Assignment"
       renderer=".los_portlet.Renderer"
       addview=".los_portlet.AddForm"
-      />
+  />
 
 </configure>

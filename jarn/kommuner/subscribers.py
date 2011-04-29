@@ -1,7 +1,32 @@
+import logging
+import socket
+from smtplib import SMTPException
+from sys import stdin, stdout
+import traceback
+
 from Acquisition import aq_parent
 from plone.app.iterate.interfaces import ICheckinCheckoutPolicy
+from Products.CMFCore.utils import getToolByName
+from Products.MailHost.MailHost import MailHostError
+from zope.component import getMultiAdapter
+from zope.publisher.browser import setDefaultSkin
+from ZPublisher.HTTPResponse import HTTPResponse
+from ZPublisher.HTTPRequest import HTTPRequest
 
 from jarn.kommuner.dmp import diff_match_patch
+
+logger = logging.getLogger('jarn.kommuner')
+
+
+def makerequest():
+    environ = {}
+    resp = HTTPResponse(stdout=stdout)
+    environ.setdefault('SERVER_NAME', 'foo')
+    environ.setdefault('SERVER_PORT', '80')
+    environ.setdefault('REQUEST_METHOD', 'GET')
+    req = HTTPRequest(stdin, environ, resp)
+    setDefaultSkin(req)
+    return req
 
 
 def serviceDescriptionUpdated(event):
@@ -30,3 +55,35 @@ def serviceDescriptionUpdated(event):
     if data:
         wc.setTitle(data['title'])
         wc.setDescription(data['description'])
+
+    # Send notification
+    creator = context.Creator()
+    pm = getToolByName(context, 'portal_membership')
+    creator = pm.getMemberById(creator)
+    if creator is None:
+        return
+
+    mail_to = creator.getProperty('email')
+    if not mail_to:
+        return
+
+    request = makerequest()
+    mail_template = getMultiAdapter((context, request),
+                                    name='updated_sd_mail')
+    mail_text = mail_template(
+                         sd_title=wc.Title(),
+                         sd_url=wc.absolute_url())
+
+    portal_state = getMultiAdapter((context, request),
+                                   name=u"plone_portal_state")
+    portal = portal_state.portal()
+    mail_from = portal.getProperty('email_from_address')
+    mail_host = getToolByName(context, 'MailHost')
+
+    try:
+        mail_host.send(mail_text.encode('utf-8'), mto=mail_to, mfrom=mail_from,
+                       subject='Service Update', charset='utf-8')
+    except (MailHostError, SMTPException, socket.error):
+        logger.error(
+            """mail error: Attempt to send mail failed.\n%s""" %
+            traceback.format_exc())

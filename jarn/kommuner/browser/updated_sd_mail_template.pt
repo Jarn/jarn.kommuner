@@ -1,0 +1,5 @@
+<tal:root define="lt string:&lt;;gt string:&gt;;">
+This got updated:
+<span tal:replace="python: options['sd_title']"/> 
+<span tal:replace="python: options['sd_url']"/> 
+</tal:root>

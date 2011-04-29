@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 from os.path import dirname, join
 import unittest2 as unittest
 
-
+from Products.CMFCore.utils import getToolByName
 from zope.event import notify
 
-from jarn.kommuner import sd_content
 from jarn.kommuner import tests
 from jarn.kommuner.interfaces import ServiceDescriptionUpdated
 from jarn.kommuner.testing import KOMMUNER_INTEGRATION_TESTING
@@ -87,12 +87,25 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         custom_national_text = getFileData('114-ver-1-custom.html')
         new_national_text = getFileData('114-ver-2.html').decode('utf-8')
         folder.invokeFactory('ServiceDescription', 'sd',
-                             title="Test",
+                             title="Test SD",
                              nationalText=old_national_text,
                              text=custom_national_text)
         sd = folder['sd']
+
+        # Set an email for test_user_1_ so that he receives a notification
+        mt = getToolByName(portal, 'portal_membership')
+        member = mt.getAuthenticatedMember()
+        member.setMemberProperties(
+            {'fullname': 'Bob Døe', 'email': 'bobdoe@jarn.com'})
+
         ev = ServiceDescriptionUpdated(sd, new_national_text)
         notify(ev)
         self.assertTrue('copy_of_sd' in folder.objectIds())
         copy_sd = folder['copy_of_sd']
         self.assertEqual(copy_sd.getRawText(), getFileData('114-ver-2-custom.html'))
+        self.assertEqual(len(portal.MailHost.messages), 1)
+        message = portal.MailHost.messages[0]
+        self.assertTrue('To: bobdoe@jarn.com' in message)
+        self.assertTrue('From: info@jarn.com' in message)
+        self.assertTrue('Test SD' in message)
+        self.assertTrue('http://nohost/plone/test-folder/copy_of_sd' in message)
