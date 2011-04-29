@@ -35,5 +35,11 @@
     <value purge="false"></value>
   </record>
 
+  <record name="jarn.kommuner.lastNotified">
+    <field type="plone.registry.field.Datetime">
+      <title>Last notification of Service Description updates</title>
+    </field>
+    <value purge="false"></value>
+  </record>
 
 </registry>
