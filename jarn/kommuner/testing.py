@@ -27,6 +27,10 @@ class KommunerLayer(PloneSandboxLayer):
         z2.installProduct(app, 'jarn.kommuner')
         z2.installProduct(app, 'Products.ATBackRef')
 
+    def tearDownZope(self, app):
+        z2.uninstallProduct(app, 'Products.ATBackRef')
+        z2.uninstallProduct(app, 'jarn.kommuner')
+
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup
         portal.portal_workflow.setDefaultChain('simple_publication_workflow')
