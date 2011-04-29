@@ -15,9 +15,8 @@ class IServiceDescription(Interface):
 
 
 class IServiceDescriptionUpdated(IObjectEvent):
-    """Reactor has been stoped.
+    """Fired when a service description has changed.
     """
-    pass
 
 
 class ServiceDescriptionUpdated(object):
