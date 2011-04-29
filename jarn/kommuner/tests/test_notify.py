@@ -13,3 +13,4 @@ class NotificationTest(unittest.TestCase):
     def test_registry_keys(self):
         registry = getUtility(IRegistry)
         self.assertTrue('jarn.kommuner.lastNotified' in registry)
+        self.assertTrue('jarn.kommuner.notifyEmail' in registry)
