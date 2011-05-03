@@ -56,6 +56,9 @@ def serviceDescriptionUpdated(event):
         wc.setTitle(data['title'])
         wc.setDescription(data['description'])
 
+    logger.info("Patched Service Description %s at %s" % \
+        (context.Title(), context.absolute_url()))
+
     # Send notification
     creator = context.Creator()
     pm = getToolByName(context, 'portal_membership')
@@ -66,7 +69,6 @@ def serviceDescriptionUpdated(event):
     mail_to = creator.getProperty('email')
     if not mail_to:
         return
-
     request = makerequest()
     mail_template = getMultiAdapter((context, request),
                                     name='updated_sd_mail')
