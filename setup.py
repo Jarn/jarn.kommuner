@@ -43,7 +43,6 @@ setup(name='jarn.kommuner',
         'plone.app.registry',
         'collective.monkeypatcher',
         'Products.ATBackRef',
-        'collective.contentgovernance'
       ],
       entry_points="""
       # -*- entry_points -*-
