@@ -24,6 +24,16 @@ LOSCategorySchema = ATFolderSchema.copy() + atapi.Schema((
         #widget=atapi.StringWidget(label=_(u"LOS Id"), visible=False),
         widget=atapi.StringWidget(label=_(u"LOS Id")),
     ),
+    atapi.TextField('text',
+        required=False,
+        searchable=True,
+        validators = ('isTidyHtmlWithCleanup', ),
+        default_output_type = 'text/x-html-safe',
+        widget = atapi.RichWidget(
+                description = '',
+                label = _(u'LOS text'),
+                rows = 25),
+    ),
     ImageField(
         'image',
         widget=atapi.ImageWidget(label=_(u"Image")),
