@@ -14,6 +14,11 @@ class IServiceDescription(Interface):
     pass
 
 
+class IServiceDescriptionCreated(IObjectEvent):
+    """Fired when a service description has been created.
+    """
+
+
 class IServiceDescriptionUpdated(IObjectEvent):
     """Fired when a service description has changed.
     """
@@ -25,3 +30,9 @@ class ServiceDescriptionUpdated(object):
         self.object = obj
         self.updated_text = updated_text
         self.data = data
+
+
+class ServiceDescriptionCreated(object):
+
+    def __init__(self, obj):
+        self.object = obj

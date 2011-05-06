@@ -18,6 +18,11 @@
     handler=".subscribers.serviceDescriptionUpdated"
     />
 
+  <subscriber
+    for="jarn.kommuner.interfaces.ServiceDescriptionCreated"
+    handler=".subscribers.serviceDescriptionCreated"
+  />
+
   <monkey:patch
       description="Security patch for BackReferenceField"
       class="Products.ATBackRef.backref.BackReferenceField"

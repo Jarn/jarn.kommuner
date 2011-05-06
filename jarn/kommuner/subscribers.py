@@ -30,6 +30,35 @@ def makerequest():
     return req
 
 
+def serviceDescriptionCreated(event):
+    registry = getUtility(IRegistry)
+    mail_to = registry['jarn.kommuner.notifyEmail']
+    if not mail_to:
+        return
+    context = event.object
+    request = makerequest()
+    mail_template = getMultiAdapter((context, request),
+                                    name='updated_sd_mail')
+    mail_text = mail_template(
+                         sd_title=context.Title(),
+                         sd_url=context.absolute_url(),
+                         charset='utf-8')
+
+    portal_state = getMultiAdapter((context, request),
+                                   name=u"plone_portal_state")
+    portal = portal_state.portal()
+    mail_from = portal.getProperty('email_from_address')
+    mail_host = getToolByName(context, 'MailHost')
+
+    try:
+        mail_host.send(mail_text.encode('utf-8'), mto=mail_to, mfrom=mail_from,
+                       subject='Service Update', charset='utf-8', msg_type=None)
+    except (MailHostError, SMTPException, socket.error):
+        logger.error(
+            """mail error: Attempt to send mail failed.\n%s""" %
+            traceback.format_exc())
+
+
 def serviceDescriptionUpdated(event):
     context = event.object
     updated_text = event.updated_text

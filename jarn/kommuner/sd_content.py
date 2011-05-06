@@ -11,6 +11,7 @@ from zope.event import notify
 from jarn.kommuner import sd_client
 from jarn.kommuner.interfaces import ILOSWords
 from jarn.kommuner.interfaces import ServiceDescriptionUpdated
+from jarn.kommuner.interfaces import ServiceDescriptionCreated
 
 
 def unescape(text):
@@ -152,9 +153,14 @@ def updateActiveServiceDescriptions(context):
 
         if not sd:
             internal_id = sd_id['tjenesteID']
-            context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
+            context_id = id_normalizer.normalize(data['title'])
+            context.invokeFactory('ServiceDescription', context_id,
                 serviceId=internal_id, title=data['title'], description=data['description'],
                 nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
+
+            ev = ServiceDescriptionCreated(context[context_id])
+            notify(ev)
+
         else:
             sd = sd[0].getObject()
             ev = ServiceDescriptionUpdated(sd, text, data)
