@@ -6,13 +6,14 @@ import traceback
 
 from Acquisition import aq_parent
 from plone.app.iterate.interfaces import ICheckinCheckoutPolicy
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from Products.MailHost.MailHost import MailHostError
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.publisher.browser import setDefaultSkin
 from ZPublisher.HTTPResponse import HTTPResponse
 from ZPublisher.HTTPRequest import HTTPRequest
-
 from jarn.kommuner.dmp import diff_match_patch
 
 logger = logging.getLogger('jarn.kommuner')
@@ -63,12 +64,15 @@ def serviceDescriptionUpdated(event):
     creator = context.Creator()
     pm = getToolByName(context, 'portal_membership')
     creator = pm.getMemberById(creator)
-    if creator is None:
-        return
-
-    mail_to = creator.getProperty('email')
+    mail_to = None
+    if creator is not None:
+        mail_to = creator.getProperty('email')
+    if not mail_to:
+        registry = getUtility(IRegistry)
+        mail_to = registry['jarn.kommuner.notifyEmail']
     if not mail_to:
         return
+
     request = makerequest()
     mail_template = getMultiAdapter((context, request),
                                     name='updated_sd_mail')
