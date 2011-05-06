@@ -1,5 +1,7 @@
 <tal:root define="lt string:&lt;;gt string:&gt;;">
-This got updated:
-<span tal:replace="python: options['sd_title']"/> 
-<span tal:replace="python: options['sd_url']"/> 
+Tjenestebeskrivelsen <span tal:replace="python: options['sd_title']"/> som du er registrert som eier av har nå blitt oppdatert fra nasjonal tjenestekatalog. Forslag til ny versjon av beskrivelsen for Karmøy Kommune er klar for godkjenning og publisering på følgede link:
+
+<span tal:replace="python: options['sd_url']"/>
+
+Vennligst oppdatèr lokal tilpasning dersom nødvendig og publisèr ny versjon.
 </tal:root>

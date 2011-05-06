@@ -74,7 +74,8 @@ def serviceDescriptionUpdated(event):
                                     name='updated_sd_mail')
     mail_text = mail_template(
                          sd_title=wc.Title(),
-                         sd_url=wc.absolute_url())
+                         sd_url=wc.absolute_url(),
+                         charset='utf-8')
 
     portal_state = getMultiAdapter((context, request),
                                    name=u"plone_portal_state")
@@ -84,7 +85,7 @@ def serviceDescriptionUpdated(event):
 
     try:
         mail_host.send(mail_text.encode('utf-8'), mto=mail_to, mfrom=mail_from,
-                       subject='Service Update', charset='utf-8')
+                       subject='Service Update', charset='utf-8', msg_type=None)
     except (MailHostError, SMTPException, socket.error):
         logger.error(
             """mail error: Attempt to send mail failed.\n%s""" %

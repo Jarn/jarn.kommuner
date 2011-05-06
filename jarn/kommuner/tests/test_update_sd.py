@@ -89,7 +89,8 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         folder.invokeFactory('ServiceDescription', 'sd',
                              title="Test SD",
                              nationalText=old_national_text,
-                             text=custom_national_text)
+                             text=custom_national_text,
+                             creators=['test_user_1_'])
         sd = folder['sd']
 
         # Set an email for test_user_1_ so that he receives a notification
@@ -97,7 +98,6 @@ class UpdateServiceDescriptionTest(unittest.TestCase):
         member = mt.getAuthenticatedMember()
         member.setMemberProperties(
             {'fullname': 'Bob Døe', 'email': 'bobdoe@jarn.com'})
-
         ev = ServiceDescriptionUpdated(sd, new_national_text)
         notify(ev)
         self.assertTrue('copy_of_sd' in folder.objectIds())
