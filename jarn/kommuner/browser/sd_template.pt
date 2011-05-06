@@ -107,11 +107,12 @@
       <h3 i18n:translate="">Valid from</h3>
       <p tal:replace="structure content"/>
     </tal:subsection>
-    <tal:subsection tal:define="content other/state"
+<!--    <tal:subsection tal:define="content other/state"
       tal:condition="content">
       <h3 i18n:translate="">State</h3>
       <p tal:replace="structure content"/>
-    </tal:subsection>    
+    </tal:subsection>
+-->
   </tal:section>
 
 </tal:sd>
