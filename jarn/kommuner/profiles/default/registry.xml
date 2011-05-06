@@ -28,4 +28,10 @@
     <value purge="false"></value>
   </record>
 
+  <record name="jarn.kommuner.notifyEmail">
+    <field type="plone.registry.field.ASCIILine">
+      <title>Email address where notifications are sent to</title>
+    </field>
+    <value purge="false"></value>
+  </record>
 </registry>
