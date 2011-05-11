@@ -1,5 +1,4 @@
 from persistent.list import PersistentList
-from plone.registry.interfaces import IRegistry
 from plone.app.testing import applyProfile
 from plone.app.testing import IntegrationTesting, FunctionalTesting
 from plone.app.testing import PloneSandboxLayer
@@ -11,7 +10,6 @@ from plone.testing import z2
 from Products.MailHost.interfaces import IMailHost
 from Products.MailHost.MailHost import MailBase
 from Products.MailHost.MailHost import _mungeHeaders
-from zope.component import getUtility
 from zope.component import getSiteManager
 
 
@@ -68,12 +66,6 @@ class KommunerLayer(PloneSandboxLayer):
         setRoles(portal, TEST_USER_ID, ['Manager'])
         portal.invokeFactory('Folder', 'test-folder')
         setRoles(portal, TEST_USER_ID, ['Member'])
-
-        # XXX: This should go away. We should not store the client's password
-        # in the generic package.
-        registry = getUtility(IRegistry)
-        registry['jarn.kommuner.katalogUserID'] = '29811'
-        registry['jarn.kommuner.katalogUserPassword'] = u'ge_77_k'
 
         # Setup mailhost
         portal.MailHost = mailhost = MockMailHost('MailHost')

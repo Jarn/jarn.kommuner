@@ -11,14 +11,14 @@
     <field type="plone.registry.field.ASCIILine">
       <title>Katalog User ID</title>
     </field>
-    <value purge="false"></value>
+    <value purge="false">180550</value>
   </record>
 
   <record name="jarn.kommuner.katalogUserPassword">
     <field type="plone.registry.field.Password">
       <title>Katalog User Password</title>
     </field>
-    <value purge="false"></value>
+    <value purge="false">J63evHux5Y9T</value>
   </record>
 
   <record name="jarn.kommuner.lastUpdate">
