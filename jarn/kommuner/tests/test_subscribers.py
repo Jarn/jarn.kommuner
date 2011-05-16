@@ -56,6 +56,7 @@ class ServiceDescriptionSubscriberTest(unittest.TestCase):
         self.assertTrue('From: info@jarn.com' in message)
         self.assertTrue('Test SD' in message)
         self.assertTrue('http://nohost/plone/test-folder/copy_of_sd' in message)
+        self.assertTrue('Kommuner Site' in message)
 
     def test_create_service_description(self):
         portal = self.layer['portal']
@@ -79,4 +80,4 @@ class ServiceDescriptionSubscriberTest(unittest.TestCase):
         self.assertTrue('From: info@jarn.com' in message)
         self.assertTrue('Test SD' in message)
         self.assertTrue('http://nohost/plone/test-folder/sd' in message)
-        
+        self.assertTrue('Kommuner Site' in message)

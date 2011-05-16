@@ -67,6 +67,8 @@ class KommunerLayer(PloneSandboxLayer):
         portal.invokeFactory('Folder', 'test-folder')
         setRoles(portal, TEST_USER_ID, ['Member'])
 
+        sp = portal.portal_properties.site_properties
+        sp.manage_changeProperties(title='Kommuner Site')
         # Setup mailhost
         portal.MailHost = mailhost = MockMailHost('MailHost')
         sm = getSiteManager(context=portal)
