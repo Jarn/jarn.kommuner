@@ -19,9 +19,12 @@
                   tal:attributes="class python:repeat['subcategory'].number() in [4, 8, 12, 16] and 'photoAlbumEntry clearMe' or 'photoAlbumEntry'">
                   <a tal:attributes="href subcategory/absolute_url;
                                      title subcategory/Description">
-                      <span class="photoAlbumEntryWrapper">
-                          <img tal:condition="subcategory/getImage|nothing"
-                               tal:replace="structure python:subcategory.tag(scale='mini', css_class='newsImage')" />
+                      <span tal:condition="subcategory/getImage|nothing"
+                            class="photoAlbumEntryWrapper">
+                          <img tal:replace="structure python:subcategory.tag(scale='mini', css_class='newsImage')" />
+                      </span>
+                      <span tal:condition="not:subcategory/getImage|nothing">
+                          <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="200" height="200" alt="" />
                       </span>
                       <span class="photoAlbumEntryTitle" tal:content="subcategory/Title">
                           Title
@@ -31,12 +34,15 @@
           </metal:items>
         </ul>
       </tal:subtopics>
+
+      <span class="visualClear"><!-- --></span>
       <div class="image-right">
         <img tal:replace="structure python:context.tag(scale='mini', css_class='newsImage')" />
       </div>
       <metal:field use-macro="python:context.widget('text', mode='view')">
           Body text
       </metal:field>
+
       <tal:services tal:define="services context/getServices" tal:condition="services">
         <label i18n:translate="">Services</label>
         <ul>
@@ -47,6 +53,7 @@
           </li>
         </ul>
       </tal:services>
+
     </metal:content-core>
 </metal:content-core>
 
