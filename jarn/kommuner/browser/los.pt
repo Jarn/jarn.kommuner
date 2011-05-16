@@ -23,7 +23,8 @@
                             class="photoAlbumEntryWrapper">
                           <img tal:replace="structure python:subcategory.tag(scale='mini', css_class='newsImage')" />
                       </span>
-                      <span tal:condition="not:subcategory/getImage|nothing">
+                      <span tal:condition="not:subcategory/getImage|nothing"
+                            class="photoAlbumEntryWrapper">
                           <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="200" height="200" alt="" />
                       </span>
                       <span class="photoAlbumEntryTitle" tal:content="subcategory/Title">
