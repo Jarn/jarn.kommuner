@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-21 13:43+0000\n"
+"POT-Creation-Date: 2011-05-24 14:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,14 +70,9 @@ msgstr "Generelt"
 msgid "Guidelines"
 msgstr "Veiledning"
 
-#: ./content/los.py:29
+#: ./content/los.py:39
 msgid "Image"
 msgstr "Bilde"
-
-#: ./browser/los.pt:18
-#: ./browser/sd.pt:15
-msgid "LOS Categories"
-msgstr "LOS kategorier"
 
 #: ./profiles/default/types/LOSCategory.xml
 msgid "LOS Category"
@@ -94,6 +89,10 @@ msgstr "LOS kategorier"
 #: ./browser/los_portlet.py:21
 msgid "LOS portlet"
 msgstr "LOS infoboks"
+
+#: ./content/los.py:34
+msgid "LOS text"
+msgstr "LOS tekst"
 
 #: ./browser/sd_template.pt:40
 msgid "Laws"
@@ -127,6 +126,10 @@ msgstr "Saksbehandling"
 msgid "Recipient"
 msgstr "Mottaker"
 
+#: ./browser/sd.pt:15
+msgid "See also"
+msgstr "Se også"
+
 #: ./profiles/default/types/ServiceDescription.xml
 msgid "Service Description"
 msgstr "Tjenestebeskrivelse"
@@ -139,20 +142,16 @@ msgstr ""
 msgid "Service description text"
 msgstr "Tjeneste beskrivelse tekst"
 
-#: ./browser/los.pt:33
-#: ./content/los.py:38
+#: ./browser/los.pt:48
+#: ./content/los.py:48
 msgid "Services"
 msgstr "Tjenester"
 
-#: ./browser/sd_template.pt:112
-msgid "State"
-msgstr "Livssituasjon"
-
-#: ./content/los.py:53
+#: ./content/los.py:63
 msgid "Synonym Ids"
 msgstr ""
 
-#: ./content/los.py:46
+#: ./content/los.py:56
 msgid "Synonyms"
 msgstr "Synonymer"
 
