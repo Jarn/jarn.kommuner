@@ -25,7 +25,7 @@
                       </span>
                       <span tal:condition="not:subcategory/getImage|nothing"
                             class="photoAlbumEntryWrapper">
-                          <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="200" height="200" alt="" />
+                          <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="173" height="173" alt="" />
                       </span>
                       <span class="photoAlbumEntryTitle" tal:content="subcategory/Title">
                           Title
