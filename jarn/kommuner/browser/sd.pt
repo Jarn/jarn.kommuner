@@ -8,14 +8,39 @@
 <body>
 
 <metal:content-core fill-slot="content-core">
-    <metal:content-core define-macro="content-core">
+    <metal:content-core define-macro="content-core" >
       <metal:field use-macro="python:context.widget('text', mode='view')">
           Body text
       </metal:field>    
       <h2 i18n:translate="">See also</h2>
       <metal:field use-macro="python:context.widget('los_categories', mode='view')">
           Body text
-      </metal:field>    
+      </metal:field>
+      <h3 i18n:translate="">Contact persons</h3>
+      <metal:contacts tal:define="contacts context/getContacts" tal:repeat="contact contacts">
+              <a href="#" tal:attributes="href python:contact.absolute_url();
+                                          title string:${contact/title} - ${contact/description}">
+                  <img src="" alt="" title="" class="photo image-left"
+                       tal:attributes="src python:contact.absolute_url() + '/photo_thumb';
+                                       alt string:${contact/title} - ${contact/description}" />
+              </a>
+              <div class="contactDetailsWrapper">
+                  <a href="#" tal:attributes="href python:contact.absolute_url();
+                                                title string:${contact/title} - ${contact/description}">
+                      <strong tal:content="contact/title" class="fn">John Doe</strong>
+                  </a>
+                  <div tal:content="contact/description" class="role">Desc</div>
+                  <div class="tel">
+                      <span class="type hiddenStructure">Work</span>
+                      <span tal:content="contact/phone" class="value">Phone</span>
+                  </div>
+                  <div tal:condition="contact/email"><a href="mailto:dev@null"
+                       tal:attributes="href string:mailto:${contact/email}"
+                       i18n:translate="label_email"
+                       i18n:domain="plone"
+                       class="email">E-mail</a></div>
+              </div>
+      </metal:contacts>
 
     </metal:content-core>
 </metal:content-core>
