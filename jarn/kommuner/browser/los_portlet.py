@@ -34,10 +34,11 @@ class Renderer(base.Renderer):
         if 'tema' not in portal:
             return []
         tema = portal['tema']
+        tema_path = '/'.join(tema.getPhysicalPath())
         ct = getToolByName(context, 'portal_catalog')
         return ct.searchResults(
             portal_type='LOSCategory',
-            path={'query': tema.absolute_url_path(), 'depth':1},
+            path={'query': tema_path, 'depth':1},
             sort_on='sortable_title')
 
 
