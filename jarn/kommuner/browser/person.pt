@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+<body>
+
+<metal:content-core fill-slot="content-core">
+    <metal:content-core define-macro="content-core">
+        <div class="vcard">
+            <img src="" alt="" title="" tal:condition="nocall:context/photo|nothing" class="photo image-left" 
+                 tal:attributes="src python:context.absolute_url() + '/photo_mini';
+                                 alt string:${context/title} - ${context/description};
+                                 title string:${context/title} - ${context/description}" />
+            <div class="contactDetailsWrapper">
+                <strong class="fn hiddenStructure" tal:content="context/title">John Doe</strong>
+                <div tal:content="context/description" class="role">Desc</div>
+                <div class="tel">
+                    <span class="type hiddenStructure">Work</span>
+                    <span tal:content="context/phone" class="value">Phone</span>
+                </div>
+                <div tal:condition="context/email"><a href="mailto:dev@null"
+                     tal:attributes="href string:mailto:${context/email}"
+                     tal:content="context/email"
+                     class="email">Email</a></div>
+            </div>
+        </div>
+        <div tal:condition="context/body | nothing" tal:content="structure context/body"/>
+    </metal:content-core>
+</metal:content-core>
+
+</body>
+</html>
+

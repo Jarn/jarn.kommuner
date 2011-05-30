@@ -14,6 +14,10 @@ class IServiceDescription(Interface):
     pass
 
 
+class IPerson(Interface):
+    pass
+
+
 class IServiceDescriptionCreated(IObjectEvent):
     """Fired when a service description has been created.
     """

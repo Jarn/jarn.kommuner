@@ -6,4 +6,6 @@
 
     <class class=".service_description.ServiceDescription"/>
 
+    <class class=".person.Person"/>
+
 </configure>

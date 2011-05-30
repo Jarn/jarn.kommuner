@@ -3,5 +3,6 @@
   <factorytypes>
     <type portal_type="LOSCategory" />
     <type portal_type="ServiceDescription" />
+    <type portal_type="Person" />
   </factorytypes>
 </object>

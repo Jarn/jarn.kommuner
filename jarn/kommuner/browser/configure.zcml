@@ -46,6 +46,13 @@
   />
 
   <browser:page
+      name="base_view"
+      for="jarn.kommuner.interfaces.IPerson"
+      template="person.pt"
+      permission="zope2.View"
+  />
+
+  <browser:page
     for="*"
     name="sd-template"
     template="sd_template.pt"
