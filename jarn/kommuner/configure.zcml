@@ -42,7 +42,7 @@
       name="default"
       title="Norwegian Communes"
       directory="profiles/default"
-      description=""
+      description="Installs the jarn.kommuner add-on"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

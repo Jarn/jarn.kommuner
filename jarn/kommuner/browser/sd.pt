@@ -12,7 +12,7 @@
       <metal:field use-macro="python:context.widget('text', mode='view')">
           Body text
       </metal:field>    
-      <h2 i18n:translate="">LOS Categories</h2>
+      <h2 i18n:translate="">See also</h2>
       <metal:field use-macro="python:context.widget('los_categories', mode='view')">
           Body text
       </metal:field>    
