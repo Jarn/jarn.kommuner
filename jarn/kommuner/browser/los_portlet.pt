@@ -26,10 +26,5 @@
              </a>
         </dd>
     </tal:los>
-
-    <dd class="portletFooter">
-        <span class="portletBottomLeft"></span>
-        <span class="portletBottomRight"></span>
-    </dd>
 </dl>
 </html>
