@@ -25,7 +25,7 @@
                       </span>
                       <span tal:condition="not:subcategory/getImage|nothing"
                             class="photoAlbumEntryWrapper">
-                          <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="173" height="173" alt="" />
+                          <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="132" height="88" alt="" />
                       </span>
                       <span class="photoAlbumEntryTitle" tal:content="subcategory/Title">
                           Title
@@ -37,8 +37,8 @@
       </tal:subtopics>
 
       <span class="visualClear"><!-- --></span>
-      <div class="image-right">
-        <img tal:replace="structure python:context.tag(scale='mini', css_class='newsImage')" />
+      <div class="image-right" id="los-category-picture">
+        <img tal:replace="structure python:context.tag(scale='mini')" />
       </div>
       <metal:field use-macro="python:context.widget('text', mode='view')">
           Body text
