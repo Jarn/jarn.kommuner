@@ -10,7 +10,7 @@
 <metal:content-core fill-slot="content-core">
     <metal:content-core define-macro="content-core">
       <tal:subtopics
-        tal:define="subcategories python:context.listFolderContents(contentFilter={'portal_type' :'LOSCategory'})"
+        tal:define="subcategories view/subcategories"
         tal:condition="subcategories">
         <h2 class="hiddenStructure">LOS Categories</h2>
         <ul id="subcategories-list">
@@ -44,7 +44,7 @@
           Body text
       </metal:field>
 
-      <tal:services tal:define="services context/getServices" tal:condition="services">
+      <tal:services tal:define="services view/services" tal:condition="services">
         <label i18n:translate="">Services</label>
         <ul>
           <li tal:repeat="service services">
@@ -54,6 +54,17 @@
           </li>
         </ul>
       </tal:services>
+
+      <tal:other tal:define="other_contents view/other_contents" tal:condition="other_contents">
+        <label i18n:translate="">Other content</label>
+        <ul>
+          <li tal:repeat="item other_contents">
+            <a tal:content="item/Title"
+               tal:attributes="href item/absolute_url;
+                               title item/Description"></a>
+          </li>
+        </ul>
+      </tal:other>
 
     </metal:content-core>
 </metal:content-core>
