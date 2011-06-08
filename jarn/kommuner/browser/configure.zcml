@@ -26,6 +26,7 @@
   <browser:page
     for="jarn.kommuner.interfaces.ILOSCategory"
     name="base_view"
+    class=".los.LOSView"
     template="los.pt"
     permission="zope2.View"
   />
