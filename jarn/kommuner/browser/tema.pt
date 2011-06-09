@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="jarn.kommuner">
+<body>
+
+<metal:content-core fill-slot="content-core">
+    <metal:content-core define-macro="content-core">
+    
+        <ul tal:define="items view/los" tal:condition="items">
+            <tal:rootlos tal:repeat="item items">
+            <li tal:define="parent python:item[0]; children python:item[1]">
+                <a tal:content="parent/Title"
+                   tal:attributes="href parent/getURL;
+                                   title parent/Description;"/>
+                <ul>
+                    <tal:childrenlos tal:repeat="child children">
+                    <li>
+                        <a tal:content="child/Title"
+                           tal:attributes="href child/getURL;
+                                           title child/Description;"/>
+                    </li>
+                    </tal:childrenlos>
+                </ul>
+            </li>
+            </tal:rootlos>
+        </ul>
+    </metal:content-core>
+</metal:content-core>
+
+</body>
+</html>
+

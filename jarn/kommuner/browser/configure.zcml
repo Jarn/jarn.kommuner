@@ -54,6 +54,14 @@
   />
 
   <browser:page
+      name="tema_view"
+      for="Products.ATContentTypes.interfaces.IATFolder"
+      class=".tema.TemaView"
+      template="tema.pt"
+      permission="zope2.View"
+  />
+
+  <browser:page
     for="*"
     name="sd-template"
     template="sd_template.pt"
