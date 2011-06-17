@@ -2,9 +2,9 @@
 """
 from Products.CMFCore.permissions import View
 from AccessControl import ClassSecurityInfo
+from Acquisition import aq_parent
 
 from zope.interface import implements
-from Products.CMFCore.utils import getToolByName
 from Products.Archetypes import atapi
 from Products.ATContentTypes.content import schemata
 from Products.ATContentTypes.content.base import ATCTContent
@@ -32,14 +32,6 @@ PersonSchema = ATContentTypeSchema.copy() + atapi.Schema((
         widget=atapi.StringWidget(
             label=_(u"Job title"),
             description=_(u"The position the person holds.")
-        ),
-        required = False
-    ),
-    atapi.StringField(
-        'department',
-        widget=atapi.StringWidget(
-            label=_(u"Department"),
-            description=''
         ),
         required = False
     ),
@@ -112,5 +104,11 @@ class Person(ATCTContent):
         """Generate image tag using the api of the ImageField
         """
         return self.getField('photo').tag(self, **kwargs)
+
+    security.declareProtected(View, 'getDepartment')
+    def getDepartment(self):
+        parent = aq_parent(self)
+        if parent.portal_type=='OrgUnit':
+            return parent
 
 atapi.registerType(Person, PROJECTNAME)

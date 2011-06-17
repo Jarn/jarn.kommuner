@@ -9,20 +9,6 @@
     title="jarn.kommuner: Update Service Catalog"
     />
 
-  <browser:view
-    for="*"
-    name="import-sd"
-    class=".maintenance.ImportActiveServiceDescriptionsView"
-    permission="cmf.ManagePortal"
-    />
-
-  <browser:view
-    for="*"
-    name="update-catalog"
-    class=".maintenance.UpdateActiveServiceDescriptionsView"
-    permission="jarn.kommuner.UpdateServiceCatalog"
-    />
-
   <browser:page
     for="jarn.kommuner.interfaces.ILOSCategory"
     name="base_view"
@@ -37,7 +23,6 @@
     template="sd.pt"
     permission="zope2.View"
   />
-
 
   <browser:page
     for="jarn.kommuner.interfaces.IServiceDescription"
@@ -62,6 +47,28 @@
   />
 
   <browser:page
+    for="jarn.kommuner.interfaces.IOrgUnit"
+    name="base_view"
+    class=".orgunit.OrgUnitView"
+    template="orgunit.pt"
+    permission="zope2.View"
+  />
+
+  <browser:view
+    for="*"
+    name="import-sd"
+    class=".maintenance.ImportActiveServiceDescriptionsView"
+    permission="cmf.ManagePortal"
+    />
+
+  <browser:view
+    for="*"
+    name="update-catalog"
+    class=".maintenance.UpdateActiveServiceDescriptionsView"
+    permission="jarn.kommuner.UpdateServiceCatalog"
+    />
+
+  <browser:page
     for="*"
     name="sd-template"
     template="sd_template.pt"
@@ -75,6 +82,7 @@
     permission="zope.Public"
   />
 
+
   <plone:portlet
       name="portlets.LOS"
       interface=".los_portlet.ILOSPortlet"
@@ -82,5 +90,6 @@
       renderer=".los_portlet.Renderer"
       addview=".los_portlet.AddForm"
   />
+
 
 </configure>

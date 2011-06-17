@@ -25,6 +25,12 @@
                      tal:attributes="href string:mailto:${context/email}"
                      tal:content="context/email"
                      class="email">Email</a></div>
+                <div tal:define="department context/getDepartment"
+                     tal:condition="department">
+                  <a href=""
+                    tal:attributes="href department/absolute_url"
+                    tal:content="department/title">Department</a></div>
+
             </div>
         </div>
         <div tal:condition="context/body | nothing" tal:content="structure context/body"/>
