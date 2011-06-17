@@ -14,11 +14,24 @@
       <role name="Owner" />
     </permission>
 
+    <permission name="jarn.kommuner: Add Organization" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+      <role name="Owner" />
+    </permission>
+
+    <permission name="jarn.kommuner: Add OrgUnit" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+      <role name="Owner" />
+    </permission>
+
     <permission name="jarn.kommuner: Add Person" acquire="False">
       <role name="Manager" />
       <role name="Contributor" />
       <role name="Owner" />
     </permission>
+
     <permission name="jarn.kommuner: Update Service Catalog" acquire="False">
         <role name="CatalogUpdater"/>
     </permission>

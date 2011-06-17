@@ -14,11 +14,12 @@ from jarn.kommuner.config import PROJECTNAME
 from jarn.kommuner.interfaces import IPerson
 from jarn.kommuner import kommunerMessageFactory as _
 
+
 PersonSchema = ATContentTypeSchema.copy() + atapi.Schema((
     atapi.TextField('body',
               required=False,
               searchable=True,
-              validators = ('isTidyHtmlWithCleanup',),
+              validators = ('isTidyHtmlWithCleanup', ),
               default_output_type = 'text/x-html-safe',
               widget = atapi.RichWidget(
                         description = '',
@@ -44,7 +45,7 @@ PersonSchema = ATContentTypeSchema.copy() + atapi.Schema((
     ),
     atapi.StringField(
         'email',
-        validators=('isEmail',),
+        validators=('isEmail', ),
         widget=atapi.StringWidget(
             label=_(u"Email address"),
             description=_(u"Contact email address."),
@@ -86,7 +87,7 @@ class Person(ATCTContent):
     meta_type = "Person"
     schema = PersonSchema
 
-    security       = ClassSecurityInfo()
+    security = ClassSecurityInfo()
 
     def __bobo_traverse__(self, REQUEST, name):
         """Transparent access to image scales
