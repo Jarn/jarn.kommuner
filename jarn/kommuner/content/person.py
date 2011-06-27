@@ -63,6 +63,14 @@ PersonSchema = ATContentTypeSchema.copy() + atapi.Schema((
         validators=('isNonEmptyFile'),
         languageIndependent=True
     ),
+    atapi.StringField(
+        'department',
+        widget=atapi.StringWidget(
+            label=_(u"Department"),
+            description=''
+        ),
+        required = False
+    ),
 
 ))
 

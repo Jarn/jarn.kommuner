@@ -6,10 +6,6 @@
 
     <class class=".service_description.ServiceDescription"/>
 
-    <class class=".organization.Organization"/>
-
-    <class class=".orgunit.OrgUnit"/>
-
     <class class=".person.Person"/>
 
 </configure>
