@@ -17,7 +17,7 @@ class LOSView(BrowserView):
     def other_contents(self):
         all_content = self.context.listFolderContents()
         # Respect exclude_from_nav for other content
-        all_content = [x for x in all_content if not x.exclude_from_nav]
+        all_content = [x for x in all_content if not x.exclude_from_nav()]
         return list(
             set(all_content) - 
             set(self.services()).union(set(self.subcategories()))
