@@ -14,14 +14,6 @@ class IServiceDescription(Interface):
     pass
 
 
-class IOrganization(Interface):
-    pass
-
-
-class IOrgUnit(Interface):
-    pass
-
-
 class IPerson(Interface):
     pass
 

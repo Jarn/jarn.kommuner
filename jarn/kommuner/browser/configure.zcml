@@ -46,14 +46,6 @@
       permission="zope2.View"
   />
 
-  <browser:page
-    for="jarn.kommuner.interfaces.IOrgUnit"
-    name="base_view"
-    class=".orgunit.OrgUnitView"
-    template="orgunit.pt"
-    permission="zope2.View"
-  />
-
   <browser:view
     for="*"
     name="import-sd"
