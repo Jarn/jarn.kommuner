@@ -37,7 +37,8 @@
       </tal:subtopics>
 
       <span class="visualClear"><!-- --></span>
-      <div class="image-right" id="los-category-picture">
+      <div class="image-right" id="los-category-picture" 
+           tal:condition="context/image|nothing">
         <img tal:replace="structure python:context.tag(scale='mini')" />
       </div>
       <metal:field use-macro="python:context.widget('text', mode='view')">
