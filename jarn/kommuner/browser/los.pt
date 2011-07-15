@@ -9,7 +9,79 @@
 
 <metal:content-core fill-slot="content-core">
     <metal:content-core define-macro="content-core">
-      <tal:subtopics
+
+    <metal:subcategories tal:condition="view/flaggedSubcategories|view/unflaggedSubcategories|nothing">
+        <h2 class="hiddenStructure">LOS Categories</h2>
+
+        <ul class="subcategoriesList" id="flagged-subcategories"
+            tal:define="subcategories view/flaggedSubcategories"
+            tal:condition="subcategories">
+          <metal:items tal:repeat="subcategory subcategories">
+              <li class="photoAlbumEntry"
+                  tal:attributes="class python:repeat['subcategory'].number() in [4, 8, 12, 16] and 'photoAlbumEntry clearMe' or 'photoAlbumEntry'">
+                  <a tal:attributes="href subcategory/absolute_url;
+                                     title subcategory/Description">
+                      <span tal:condition="subcategory/getImage|nothing"
+                            class="photoAlbumEntryWrapper">
+                          <img tal:replace="structure python:subcategory.tag(scale='category', css_class='newsImage')" />
+                      </span>
+                      <span tal:condition="not:subcategory/getImage|nothing"
+                            class="photoAlbumEntryWrapper">
+                          <img tal:attributes="src string:${context/absolute_url}/category_placeholder.jpg" width="132" height="88" alt="" />
+                      </span>
+                      <span class="photoAlbumEntryTitle" tal:content="subcategory/Title">
+                          Title
+                      </span>
+                  </a>
+              </li>
+          </metal:items>
+        </ul>
+
+        <div class="visualClear"><!-- --></div>
+
+        <ul class="subcategoriesList" id="unflagged-subcategories" 
+            tal:define="subcategories view/unflaggedSubcategories"
+            tal:condition="subcategories">
+          <metal:items tal:repeat="subcategory subcategories">
+              <li class="photoAlbumEntry"
+                  tal:attributes="class python:repeat['subcategory'].number() in [4, 8, 12, 16] and 'photoAlbumEntry clearMe' or 'photoAlbumEntry'">
+                  <a tal:attributes="href subcategory/absolute_url;
+                                     title subcategory/Description">
+                      <span class="photoAlbumEntryTitle" tal:content="subcategory/Title">
+                          Title
+                      </span>
+                  </a>
+              </li>
+          </metal:items>
+        </ul>
+        <!-- <ul id="flagged-items" class="clearfix" tal:condition="view/flaggedContents">
+            <metal:flagged tal:repeat="item view/flaggedContents">
+                <li tal:define="itemObj item/getObject">
+                    <a href="" tal:attributes="href item/getURL">
+                        <tal:image condition="exists:itemObj/header-image">
+                            <img width="170" height="60" tal:attributes="src string:${item/getURL}/header-image_listing_crop" class="mediaImg" alt="" />
+                        </tal:image>
+                        <h2><span tal:content="item/Title">Title</span>&nbsp;&#9658;</h2>
+                        <span tal:content="item/Description">Description</span>
+                    </a>
+                </li>
+            </metal:flagged>
+        </ul>
+
+        <ul id="unflagged-items" class="clearfix" tal:condition="view/unflaggedContents">
+            <metal:unflagged tal:repeat="item view/unflaggedContents">
+                <li tal:define="itemObj item/getObject">
+                    <a href="" tal:attributes="href item/getURL">
+                        <h2><span tal:content="item/Title">Title</span>&nbsp;&#9658;</h2>
+                        <span tal:content="item/Description">Description</span>
+                    </a>
+                </li>
+            </metal:unflagged>
+        </ul> -->
+    </metal:subcategories>
+
+
+      <!-- <tal:subtopics
         tal:define="subcategories view/subcategories"
         tal:condition="subcategories">
         <h2 class="hiddenStructure">LOS Categories</h2>
@@ -34,7 +106,7 @@
               </li>
           </metal:items>
         </ul>
-      </tal:subtopics>
+      </tal:subtopics> -->
 
       <span class="visualClear"><!-- --></span>
       <div class="image-right" id="los-category-picture" 

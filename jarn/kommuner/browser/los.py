@@ -1,10 +1,22 @@
+from plone.memoize.view import memoize
 from Products.Five.browser import BrowserView
 
 class LOSView(BrowserView):
 
-    def subcategories(self):
-        return self.context.listFolderContents(
-            contentFilter={'portal_type' :'LOSCategory'})
+    @memoize
+    def flaggedSubcategories(self):
+        content_filter = {'portal_type' :'LOSCategory'}
+        all_content = self.context.listFolderContents(content_filter)
+
+        return [x for x in all_content if x.getField('flaggedobject').get(x)]
+
+    @memoize
+    def unflaggedSubcategories(self):
+        content_filter = {'portal_type' :'LOSCategory'}
+        all_content = self.context.listFolderContents(content_filter)
+        flagged_uids = [brain.UID for brain in self.flaggedSubcategories()]
+
+        return [brain for brain in all_content if brain.UID not in flagged_uids]
 
     def services(self):
         linked_services = self.context.getServices()
@@ -19,6 +31,7 @@ class LOSView(BrowserView):
         # Respect exclude_from_nav for other content
         all_content = [x for x in all_content if not x.exclude_from_nav()]
         return list(
-            set(all_content) - 
-            set(self.services()).union(set(self.subcategories()))
+            set(all_content) -
+            set(self.services()).union(set(self.flaggedSubcategories())) -
+            set(self.services()).union(set(self.unflaggedSubcategories()))
         )
