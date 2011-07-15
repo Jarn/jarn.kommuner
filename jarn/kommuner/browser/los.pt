@@ -10,7 +10,7 @@
 <metal:content-core fill-slot="content-core">
     <metal:content-core define-macro="content-core">
 
-    <metal:subcategories tal:condition="view/flaggedSubcategories|view/unflaggedSubcategories|nothing">
+    <metal:subcategories tal:condition="python: view.flaggedSubcategories() or view.unflaggedSubcategories()">
         <h2 class="hiddenStructure">LOS Categories</h2>
 
         <ul class="subcategoriesList" id="flagged-subcategories"
