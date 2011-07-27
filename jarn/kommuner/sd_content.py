@@ -1,7 +1,8 @@
-from Acquisition import aq_parent
+import logging
 import re, htmlentitydefs
 from datetime import datetime
 
+from Acquisition import aq_parent
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
@@ -12,6 +13,8 @@ from jarn.kommuner import sd_client
 from jarn.kommuner.interfaces import ILOSWords
 from jarn.kommuner.interfaces import ServiceDescriptionUpdated
 from jarn.kommuner.interfaces import ServiceDescriptionCreated
+
+logger = logging.getLogger('jarn.kommuner')
 
 
 def unescape(text):
@@ -127,11 +130,13 @@ def importActiveServiceDescriptions(context):
         data = getServiceDescriptionData(context, sd_id)
         text = context.restrictedTraverse('@@sd-template')(data=data)
         los_categories = [brain.getObject() for brain in data['topic_refs']]
+        logger.info("Creating service description '%s'" % data['title'])
         context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
             serviceId=internal_id, title=data['title'], description=data['description'],
             nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
     registry = getUtility(IRegistry)
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
+    logger.info('done')
 
 
 def updateActiveServiceDescriptions(context):
@@ -154,14 +159,14 @@ def updateActiveServiceDescriptions(context):
         if not sd:
             internal_id = sd_id['tjenesteID']
             context_id = id_normalizer.normalize(data['title'])
+            logger.info("Creating service description '%s'" % data['title'])
             context.invokeFactory('ServiceDescription', context_id,
                 serviceId=internal_id, title=data['title'], description=data['description'],
                 nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
-
             ev = ServiceDescriptionCreated(context[context_id])
             notify(ev)
-
         else:
             sd = sd[0].getObject()
+            logger.info("Updating service description '%s'" % data['title'])
             ev = ServiceDescriptionUpdated(sd, text, data)
             notify(ev)
