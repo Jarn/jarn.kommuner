@@ -3,12 +3,11 @@ import xml.etree.ElementTree as ET
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFCore.utils import getToolByName
-from Products.CMFEditions.setuphandlers import DEFAULT_POLICIES
 from zope.component import getUtility
 
 from jarn.kommuner.interfaces import ILOSWords
 
-
+DEFAULT_POLICIES = ('at_edit_autoversion', 'version_on_revert')
 TYPES_TO_VERSION = ['ServiceDescription']
 
 
