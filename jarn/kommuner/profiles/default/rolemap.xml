@@ -21,7 +21,8 @@
     </permission>
 
     <permission name="jarn.kommuner: Update Service Catalog" acquire="False">
-        <role name="CatalogUpdater"/>
+      <role name="Manager" />
+      <role name="CatalogUpdater"/>
     </permission>
 
   </permissions>

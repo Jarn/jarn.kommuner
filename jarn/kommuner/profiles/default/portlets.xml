@@ -12,6 +12,17 @@
     <for interface="plone.app.portlets.interfaces.IColumn" />
   </portlet>
 
+  <!-- Hide navigation portlet -->
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/"
+      type="portlets.Navigation"
+      name="navigation"
+      visible="False"
+      />
+
+  <!-- Assign LOS topics portlet -->
   <assignment
       manager="plone.leftcolumn"
       category="context"

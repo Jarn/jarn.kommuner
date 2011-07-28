@@ -58,7 +58,7 @@
 
   <browser:view
     for="*"
-    name="import-sd"
+    name="import-catalog"
     class=".maintenance.ImportActiveServiceDescriptionsView"
     permission="cmf.ManagePortal"
     />
