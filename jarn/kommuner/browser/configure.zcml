@@ -4,6 +4,8 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="jarn.kommuner">
 
+  <include package="plone.app.contentmenu" />
+
   <permission
     id="jarn.kommuner.UpdateServiceCatalog"
     title="jarn.kommuner: Update Service Catalog"
@@ -45,6 +47,14 @@
       template="tema.pt"
       permission="zope2.View"
   />
+
+  <browser:menuItem
+      for="Products.ATContentTypes.interfaces.IATFolder"
+      menu="plone_displayviews"
+      title="Tema view"
+      action="tema_view"
+      description=""
+      />
 
   <browser:view
     for="*"
