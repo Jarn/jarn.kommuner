@@ -29,9 +29,4 @@
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />
   </action>
-  <action title="Manage frontpage" action_id="manage-frontpage" category="object"
-     condition_expr="" url_expr="string:${object_url}/manage-frontpage"
-     visible="True" i18n:attributes="title">
-   <permission value="Modify portal content" />
-  </action>
 </object>

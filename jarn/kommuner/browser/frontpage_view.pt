@@ -62,6 +62,14 @@
                         <tal:block replace="structure provider:frontpage.main.4" />
                     </div>
                 </div>
+                <div class="row">
+                    <a class="managePortletsFallback"
+                        tal:attributes="href string:${view/object_url}/manage-frontpage"
+                        i18n:domain="plone"
+                        i18n:translate="manage_portlets_link">
+                        Manage portlets
+                    </a>
+                </div>
             </section>
         </div>
     </div>
