@@ -7,19 +7,19 @@
   company board of the frontpage view-->
   <portletmanager
     name="frontpage.main.1"
-    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    type="jarn.kommuner.interfaces.IFrontpagePortletManagers"
     />
   <portletmanager
     name="frontpage.main.2"
-    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    type="jarn.kommuner.interfaces.IFrontpagePortletManagers"
     />
   <portletmanager
     name="frontpage.main.3"
-    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    type="jarn.kommuner.interfaces.IFrontpagePortletManagers"
     />
   <portletmanager
     name="frontpage.main.4"
-    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    type="jarn.kommuner.interfaces.IFrontpagePortletManagers"
     />
 
   <portlet
