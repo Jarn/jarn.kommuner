@@ -41,11 +41,26 @@
   />
 
   <browser:page
-      name="base_view"
+      name="frontpage_view"
       for="jarn.kommuner.interfaces.IFrontpage"
+      class=".frontpage.FrontPageView"
       template="frontpage_view.pt"
       permission="zope2.View"
   />
+  <browser:menuItem
+      for="jarn.kommuner.interfaces.IFrontpage"
+      menu="plone_displayviews"
+      title="Frontpage view"
+      action="base_view"
+      description="Frontpage view for intranets."
+      />
+  <browser:page
+      name="manage-frontpage"
+      for="plone.portlets.interfaces.ILocalPortletAssignable"
+      class=".manage_frontpage.UtsiraManageContextualPortlets"
+      permission="cmf.ModifyPortalContent"
+      template="manage-frontpage.pt"
+      />
 
   <browser:page
       name="tema_view"
