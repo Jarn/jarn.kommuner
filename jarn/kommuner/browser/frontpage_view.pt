@@ -64,7 +64,7 @@
                 </div>
                 <div class="row">
                     <a class="managePortletsFallback"
-                        tal:attributes="href string:${view/object_url}/manage-frontpage"
+                        tal:attributes="href string:${context/absolute_url}/manage-frontpage"
                         i18n:domain="plone"
                         i18n:translate="manage_portlets_link">
                         Manage portlets
