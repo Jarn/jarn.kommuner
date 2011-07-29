@@ -25,14 +25,16 @@
                 <div class="cell width-16 position-0"
                      id="portal-column-content">
 
+                    <div id="viewlet-above-content" tal:content="structure provider:plone.abovecontent" />
+                    <nav>
+                        <ul><li><a href="#">Turistinformasjon om Utsira</a></
+                                li><li><a href="#">Tourist information in English</a></
+                                li><li><a href="#">Tourist information in Deutsch</a></
+                                li><li><a href="#">Tourist information in Nederlans</a></
+                                li></ul>
+                    </nav>
+
                 </div>
-                <nav>
-                    <ul><li><a href="#">Turistinformasjon om Utsira</a></
-                            li><li><a href="#">Tourist information in English</a></
-                            li><li><a href="#">Tourist information in Deutsch</a></
-                            li><li><a href="#">Tourist information in Nederlans</a></
-                            li></ul>
-                </nav>
             </div>
         </section>
 
