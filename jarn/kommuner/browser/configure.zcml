@@ -41,6 +41,13 @@
   />
 
   <browser:page
+      name="base_view"
+      for="jarn.kommuner.interfaces.IFrontpage"
+      template="frontpage_view.pt"
+      permission="zope2.View"
+  />
+
+  <browser:page
       name="tema_view"
       for="Products.ATContentTypes.interfaces.IATFolder"
       class=".tema.TemaView"

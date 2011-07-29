@@ -5,7 +5,7 @@
     <permission name="jarn.kommuner: Add LOSCategory" acquire="False">
       <role name="Manager" />
       <role name="Contributor" />
-      <role name="Owner" />      
+      <role name="Owner" />
     </permission>
 
     <permission name="jarn.kommuner: Add ServiceDescription" acquire="False">
@@ -15,6 +15,12 @@
     </permission>
 
     <permission name="jarn.kommuner: Add Person" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+      <role name="Owner" />
+    </permission>
+
+    <permission name="jarn.kommuner: Add Frontpage" acquire="False">
       <role name="Manager" />
       <role name="Contributor" />
       <role name="Owner" />

@@ -4,5 +4,6 @@
     <type portal_type="LOSCategory" />
     <type portal_type="ServiceDescription" />
     <type portal_type="Person" />
+    <type portal_type="Frontpage" />
   </factorytypes>
 </object>

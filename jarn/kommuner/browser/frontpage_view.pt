@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="disable_column_one python:request.set('disable_plone.leftcolumn',1);
+                             disable_column_two python:request.set('disable_plone.rightcolumn',1);" />
+</head>
+<body>
+    <div id="portal-columns" class="row"
+         metal:fill-slot="columns"
+         tal:define="isAnon context/@@plone_portal_state/anonymous;
+                     raiseUnauthorized python:isAnon and context.raiseUnauthorized() or None;
+                     checkPermission nocall: context/portal_membership/checkPermission;
+                     can_edit_portlets python:checkPermission('Portlets: Manage portlets', context);
+                     dummy python:can_edit_portlets and request.set('enable_border', True) or None;
+                     show_border context/@@plone/showEditableBorder">
+
+        <section id="company-board" class="clearfix" tal:condition="not:ajax_load" >
+            <div class="contentAlignment">
+                <div class="cell width-16 position-0"
+                     id="portal-column-content">
+
+                </div>
+                <nav>
+                    <ul><li><a href="#">Turistinformasjon om Utsira</a></
+                            li><li><a href="#">Tourist information in English</a></
+                            li><li><a href="#">Tourist information in Deutsch</a></
+                            li><li><a href="#">Tourist information in Nederlans</a></
+                            li></ul>
+                </nav>
+            </div>
+        </section>
+
+        <div class="contentAlignment">
+            <div id="edit-bar"
+                tal:condition="show_border"
+                tal:content="structure provider:plone.contentviews" />
+
+            <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+              Portal status message
+            </div>
+
+            <section id="content">
+                <div id="content-core">
+                    <div>
+                        <tal:block replace="structure provider:frontpage.main.1" />
+                    </div>
+                    <div>
+                        <tal:block replace="structure provider:frontpage.main.2" />
+                    </div>
+                    <div>
+                        <tal:block replace="structure provider:frontpage.main.3" />
+                    </div>
+                    <div>
+                        <tal:block replace="structure provider:frontpage.main.4" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
