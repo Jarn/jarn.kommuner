@@ -3,6 +3,25 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="jarn.kommuner">
 
+  <!-- frontpage.main — managers located in the main (LEFT) column of the
+  company board of the frontpage view-->
+  <portletmanager
+    name="frontpage.main.1"
+    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    />
+  <portletmanager
+    name="frontpage.main.2"
+    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    />
+  <portletmanager
+    name="frontpage.main.3"
+    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    />
+  <portletmanager
+    name="frontpage.main.4"
+    type="intranett.theme.browser.interfaces.IFrontpagePortletManagers"
+    />
+
   <portlet
     addview="portlets.LOS"
     title="Tema Portlet"
