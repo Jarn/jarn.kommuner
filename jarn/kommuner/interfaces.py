@@ -1,3 +1,4 @@
+from plone.app.portlets.interfaces import IColumn
 from zope.component.interfaces import IObjectEvent
 from zope.interface import Interface
 
@@ -20,6 +21,11 @@ class IPerson(Interface):
 
 class IFrontpage(Interface):
     pass
+
+
+class IFrontpagePortletManagers(IColumn):
+    """ General interface for portlet managers on the Frontpage View.
+    """
 
 
 class IServiceDescriptionCreated(IObjectEvent):
