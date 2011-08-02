@@ -12,7 +12,8 @@
   <include package=".browser" />
   <include package=".content" />
 
-  <include package="collective.contentgovernance" /> 
+  <include package="collective.contentgovernance" />
+
   <subscriber
     for="jarn.kommuner.interfaces.ServiceDescriptionUpdated"
     handler=".subscribers.serviceDescriptionUpdated"
