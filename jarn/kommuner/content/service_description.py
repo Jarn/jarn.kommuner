@@ -6,6 +6,7 @@ from Products.ATContentTypes.interface import IATContentType
 from Products.ATContentTypes.content.base import ATCTContent
 from Products.ATContentTypes.content.base import ATContentTypeSchema
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.permissions import View
 from zope.interface import implements
 
 from jarn.kommuner.config import PROJECTNAME
@@ -104,10 +105,13 @@ class ServiceDescription(ATCTContent):
     schema = ServiceDescriptionSchema
     security = ClassSecurityInfo()
 
+    security.declareProtected(View, 'losCategoriesVocab')
     def losCategoriesVocab(self):
         return losCategoriesRefs(self)
 
+    security.declareProtected(View, 'listContacts')
     def listContacts(self):
         return listPersons(self)
+
 
 atapi.registerType(ServiceDescription, PROJECTNAME)
