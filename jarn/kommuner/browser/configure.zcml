@@ -80,14 +80,14 @@
       />
 
   <browser:view
-    for="*"
+    for="plone.folder.interfaces.IFolder"
     name="import-catalog"
     class=".maintenance.ImportActiveServiceDescriptionsView"
     permission="cmf.ManagePortal"
     />
 
   <browser:view
-    for="*"
+    for="plone.folder.interfaces.IFolder"
     name="update-catalog"
     class=".maintenance.UpdateActiveServiceDescriptionsView"
     permission="jarn.kommuner.UpdateServiceCatalog"
