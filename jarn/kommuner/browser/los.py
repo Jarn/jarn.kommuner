@@ -16,7 +16,7 @@ class LOSView(BrowserView):
         all_content = self.context.listFolderContents(content_filter)
         flagged_uids = [brain.UID for brain in self.flaggedSubcategories()]
 
-        return [brain for brain in all_content if brain.UID not in flagged_uids]
+        return [x for x in all_content if x.UID not in flagged_uids]
 
     def services(self):
         linked_services = self.context.getServices()
