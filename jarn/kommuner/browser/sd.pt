@@ -8,6 +8,7 @@
 <body>
 
 <metal:content-core fill-slot="content-core">
+    <tal:tag define="dummy context/put_in_place" />
     <metal:content-core define-macro="content-core" >
       <metal:field use-macro="python:context.widget('text', mode='view')">
           Body text

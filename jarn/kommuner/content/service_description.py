@@ -1,4 +1,6 @@
+from Acquisition import aq_parent
 from AccessControl import ClassSecurityInfo
+from zExceptions import Redirect
 from Products.Archetypes import atapi
 from Products.Archetypes.atapi import AnnotationStorage
 from Products.ATContentTypes.content import schemata
@@ -11,6 +13,7 @@ from zope.interface import implements
 
 from jarn.kommuner.config import PROJECTNAME
 from jarn.kommuner.interfaces import IServiceDescription
+from jarn.kommuner.interfaces import ILOSCategory
 from jarn.kommuner.vocabularies import losCategoriesRefs
 from jarn.kommuner import kommunerMessageFactory as _
 
@@ -112,6 +115,26 @@ class ServiceDescription(ATCTContent):
     security.declareProtected(View, 'listContacts')
     def listContacts(self):
         return listPersons(self)
+
+    security.declareProtected(View, 'inplace_url')
+    def inplace_url(self):
+        # Find our category. If there's more than one, pick the
+        # alphabetically first.
+        categories = sorted(self.getLos_categories(), key=lambda x:x.getId())
+        if categories:
+            # Base our URL on the category
+            return '%s/%s' % (categories[0].absolute_url(), self.getId())
+        # If we can't find a category, return the absolute URL.
+        return self.absolute_url()
+
+    security.declareProtected(View, 'put_in_place')
+    def put_in_place(self):
+        # Redirect a ServiceDescription to its "place".
+        if not ILOSCategory.providedBy(aq_parent(self)):
+            url = self.inplace_url()
+            if url != self.absolute_url():
+                raise Redirect(url)
+        return ''
 
 
 atapi.registerType(ServiceDescription, PROJECTNAME)
