@@ -70,7 +70,7 @@
         <ul>
           <li tal:repeat="service services">
             <a tal:content="service/Title"
-               tal:attributes="href service/absolute_url;
+               tal:attributes="href service/getId;
                                title service/Description"></a>
           </li>
         </ul>
