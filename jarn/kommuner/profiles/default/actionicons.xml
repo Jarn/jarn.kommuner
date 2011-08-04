@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<action-icons>
+ <action-icon category="object_buttons" action_id="iterate_checkin"
+              icon_expr="" />
+ <action-icon category="object_buttons" action_id="iterate_checkout"
+              icon_expr="" />
+ <action-icon category="object_buttons" action_id="iterate_checkout_cancel"
+              icon_expr="" />
+</action-icons>
