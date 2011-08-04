@@ -120,6 +120,7 @@ def setupLOSContent(context):
         tema_folder = portal['tema']
         tema_folder.unmarkCreationFlag()
         tema_folder.setExcludeFromNav(True)
+        tema_folder.setLayout('tema_view')
         wftool.doActionFor(tema_folder, 'publish')
         tema_folder.reindexObject()
 
