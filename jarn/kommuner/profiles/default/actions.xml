@@ -5,19 +5,16 @@
 
   <object name="iterate_checkin" meta_type="CMF Action" i18n:domain="plone">
    <property name="icon_expr"></property>
-   <property name="available_expr">python:path('object/@@iterate_control').checkin_allowed()</property>
    <property name="visible">True</property>
   </object>
 
   <object name="iterate_checkout" meta_type="CMF Action" i18n:domain="plone">
    <property name="icon_expr"></property>
-   <property name="available_expr">python:path('object/@@iterate_control').checkout_allowed()</property>
    <property name="visible">False</property>
   </object>
 
   <object name="iterate_checkout_cancel" meta_type="CMF Action" i18n:domain="plone">
    <property name="icon_expr"></property>
-   <property name="available_expr">python:path('object/@@iterate_control').cancel_allowed()</property>
    <property name="visible">True</property>
   </object>
 
