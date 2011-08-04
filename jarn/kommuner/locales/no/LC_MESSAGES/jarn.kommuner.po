@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-05-24 14:30+0000\n"
+"POT-Creation-Date: 2011-08-04 22:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,13 +14,25 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ./profiles/default/types/Frontpage.xml
+msgid "A Frontpage"
+msgstr ""
+
 #: ./profiles/default/types/LOSCategory.xml
 msgid "A LOS Category"
 msgstr "LOS kategori"
 
+#: ./profiles/default/types/Person.xml
+msgid "A Person"
+msgstr ""
+
 #: ./profiles/default/portlets.xml
 msgid "A portlet which shows the main LOS topics."
 msgstr "Infoboks som beskriver LOS hovedemner"
+
+#: ./content/person.py:61
+msgid "A portrait of the person."
+msgstr ""
 
 #: ./profiles/default/types/ServiceDescription.xml
 msgid "A service description"
@@ -42,6 +54,19 @@ msgstr "Brosjyrer/dokumenter"
 msgid "Complaint"
 msgstr "Klage"
 
+#: ./content/person.py:43
+msgid "Contact email address."
+msgstr ""
+
+#: ./browser/sd.pt:20
+#: ./content/service_description.py:82
+msgid "Contact persons"
+msgstr "Kontaktpersoner"
+
+#: ./content/person.py:52
+msgid "Contact phone number"
+msgstr ""
+
 #: ./browser/sd_template.pt:20
 msgid "Criteria"
 msgstr "Kriterier/vilkår"
@@ -49,6 +74,10 @@ msgstr "Kriterier/vilkår"
 #: ./browser/sd_template.pt:84
 msgid "Deadline"
 msgstr "Søknadsfrist"
+
+#: ./content/person.py:69
+msgid "Department"
+msgstr ""
 
 #: ./browser/sd_template.pt:10
 msgid "Description"
@@ -58,9 +87,21 @@ msgstr "Beskrivelse"
 msgid "Duration"
 msgstr "Varighet"
 
+#: ./content/person.py:42
+msgid "Email address"
+msgstr ""
+
 #: ./browser/sd_template.pt:64
 msgid "Form"
 msgstr "Skjema"
+
+#: ./profiles/default/types/Frontpage.xml
+msgid "Frontpage"
+msgstr ""
+
+#: ./content/person.py:77
+msgid "Fullname"
+msgstr ""
 
 #: ./browser/sd_template.pt:7
 msgid "General"
@@ -74,6 +115,10 @@ msgstr "Veiledning"
 msgid "Image"
 msgstr "Bilde"
 
+#: ./content/person.py:33
+msgid "Job title"
+msgstr ""
+
 #: ./profiles/default/types/LOSCategory.xml
 msgid "LOS Category"
 msgstr "LOS kategori"
@@ -82,7 +127,7 @@ msgstr "LOS kategori"
 msgid "LOS Id"
 msgstr ""
 
-#: ./content/service_description.py:47
+#: ./content/service_description.py:59
 msgid "LOS categories"
 msgstr "LOS kategorier"
 
@@ -98,7 +143,7 @@ msgstr "LOS tekst"
 msgid "Laws"
 msgstr "Regelverk"
 
-#: ./content/service_description.py:26
+#: ./content/service_description.py:38
 msgid "National catalog text"
 msgstr "Nasjonal tjenestekatalog"
 
@@ -110,9 +155,25 @@ msgstr "Praktiske opplysninger"
 msgid "Other"
 msgstr "Andre opplysninger"
 
+#: ./browser/los.pt:80
+msgid "Other content"
+msgstr ""
+
 #: ./browser/sd_template.pt:30
 msgid "Partners"
 msgstr "Partnere"
+
+#: ./profiles/default/types/Person.xml
+msgid "Person"
+msgstr ""
+
+#: ./content/person.py:51
+msgid "Phone number"
+msgstr ""
+
+#: ./content/person.py:60
+msgid "Photo"
+msgstr ""
 
 #: ./browser/sd_template.pt:25
 msgid "Price"
@@ -126,7 +187,7 @@ msgstr "Saksbehandling"
 msgid "Recipient"
 msgstr "Mottaker"
 
-#: ./browser/sd.pt:15
+#: ./browser/sd.pt:16
 msgid "See also"
 msgstr "Se også"
 
@@ -134,15 +195,15 @@ msgstr "Se også"
 msgid "Service Description"
 msgstr "Tjenestebeskrivelse"
 
-#: ./content/service_description.py:61
+#: ./content/service_description.py:73
 msgid "Service Id"
 msgstr ""
 
-#: ./content/service_description.py:37
+#: ./content/service_description.py:49
 msgid "Service description text"
 msgstr "Tjeneste beskrivelse tekst"
 
-#: ./browser/los.pt:48
+#: ./browser/los.pt:69
 #: ./content/los.py:48
 msgid "Services"
 msgstr "Tjenester"
@@ -163,6 +224,10 @@ msgstr "Målgruppe"
 msgid "Tema Portlet"
 msgstr "Tema infoboks"
 
+#: ./content/person.py:34
+msgid "The position the person holds."
+msgstr ""
+
 #: ./browser/sd_template.pt:102
 msgid "Updated"
 msgstr "Dato oppdatert"
@@ -170,4 +235,9 @@ msgstr "Dato oppdatert"
 #: ./browser/sd_template.pt:107
 msgid "Valid from"
 msgstr "Gyldig fra"
+
+#. Default: "Body Text"
+#: ./content/person.py:26
+msgid "label_body_text"
+msgstr ""
 
