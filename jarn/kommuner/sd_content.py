@@ -131,9 +131,10 @@ def importActiveServiceDescriptions(context):
         text = context.restrictedTraverse('@@sd-template')(data=data)
         los_categories = [brain.getObject() for brain in data['topic_refs']]
         logger.info("Creating service description '%s'" % data['title'])
-        context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
+        new_id = context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
             serviceId=internal_id, title=data['title'], description=data['description'],
             nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
+        context[new_id].unmarkCreationFlag()
     registry = getUtility(IRegistry)
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
     logger.info('done')
@@ -158,11 +159,11 @@ def updateActiveServiceDescriptions(context):
 
         if not sd:
             internal_id = sd_id['tjenesteID']
-            context_id = id_normalizer.normalize(data['title'])
             logger.info("Creating service description '%s'" % data['title'])
-            context.invokeFactory('ServiceDescription', context_id,
+            new_id = context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
                 serviceId=internal_id, title=data['title'], description=data['description'],
                 nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
+            context[new_id].unmarkCreationFlag()
             ev = ServiceDescriptionCreated(context[context_id])
             notify(ev)
         else:

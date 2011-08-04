@@ -118,6 +118,7 @@ def setupLOSContent(context):
         portal.invokeFactory('Folder', 'tema',
             title='Tema')
         tema_folder = portal['tema']
+        tema_folder.unmarkCreationFlag()
         tema_folder.setExcludeFromNav(True)
         wftool.doActionFor(tema_folder, 'publish')
         tema_folder.reindexObject()
@@ -136,6 +137,7 @@ def setupLOSContent(context):
         folder_id = tema_folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
             title=title, losId=topic_id)
         folder = tema_folder[folder_id]
+        folder.unmarkCreationFlag()
         wftool.doActionFor(folder, 'publish')
         folder.reindexObject()
         for subtopic in sub_topics:
@@ -152,5 +154,6 @@ def setupLOSContent(context):
                 subfolder_id = folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
                     title=title, losId=subtopic_id, synonyms=subtopic_synonyms, synonymIds=subtopic_synonym_ids)
                 subfolder = folder[subfolder_id]
+                subfolder.unmarkCreationFlag()
                 wftool.doActionFor(subfolder, 'publish')
                 subfolder.reindexObject()
