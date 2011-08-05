@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">A LOS Category</property>
   <property name="content_meta_type">LOSCategory</property>
-  <property name="content_icon">document_icon.gif</property>
+  <property name="content_icon"></property>
   <property name="product">jarn.kommuner</property>
   <property name="factory">addLOSCategory</property>
   <property name="immediate_view">atct_edit</property>
