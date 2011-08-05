@@ -97,7 +97,7 @@ msgstr "Skjema"
 
 #: ./profiles/default/types/Frontpage.xml
 msgid "Frontpage"
-msgstr ""
+msgstr "Forside"
 
 #: ./content/person.py:77
 msgid "Fullname"
