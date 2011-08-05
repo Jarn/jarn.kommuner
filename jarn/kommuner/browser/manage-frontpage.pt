@@ -23,15 +23,6 @@
                      show_border context/@@plone/showEditableBorder;
                      ploneview context/@@plone">
 
-        <section id="company-board" class="clearfix" tal:condition="not:ajax_load" >
-            <div class="contentAlignment">
-                <div class="cell width-16 position-0"
-                     id="portal-column-content">
-                    <div class="visualClear"><!-- --></div>
-                </div>
-            </div>
-        </section>
-
         <div class="contentAlignment">
             <div id="edit-bar"
                 tal:condition="show_border"
