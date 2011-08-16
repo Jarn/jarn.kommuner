@@ -46,11 +46,13 @@ class KommunerLayer(PloneSandboxLayer):
         import plone.app.registry
         import Products.ATBackRef
         import collective.monkeypatcher
+        import plone.app.iterate
 
         self.loadZCML(package=collective.monkeypatcher)
         self.loadZCML(package=jarn.kommuner)
         self.loadZCML(package=plone.app.registry)
         self.loadZCML(package=Products.ATBackRef)
+        self.loadZCML(package=plone.app.iterate)
         z2.installProduct(app, 'jarn.kommuner')
         z2.installProduct(app, 'Products.ATBackRef')
 
