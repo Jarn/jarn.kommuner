@@ -1,7 +1,6 @@
 import logging
 import socket
 from smtplib import SMTPException
-from sys import stdin, stdout
 import traceback
 
 from Acquisition import aq_parent
@@ -11,23 +10,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.MailHost.MailHost import MailHostError
 from zope.component import getMultiAdapter
 from zope.component import getUtility
-from zope.publisher.browser import setDefaultSkin
-from ZPublisher.HTTPResponse import HTTPResponse
-from ZPublisher.HTTPRequest import HTTPRequest
 from jarn.kommuner.dmp import diff_match_patch
 
 logger = logging.getLogger('jarn.kommuner')
-
-
-def makerequest():
-    environ = {}
-    resp = HTTPResponse(stdout=stdout)
-    environ.setdefault('SERVER_NAME', 'foo')
-    environ.setdefault('SERVER_PORT', '80')
-    environ.setdefault('REQUEST_METHOD', 'GET')
-    req = HTTPRequest(stdin, environ, resp)
-    setDefaultSkin(req)
-    return req
 
 
 def serviceDescriptionCreated(event):
@@ -36,7 +21,7 @@ def serviceDescriptionCreated(event):
     if not mail_to:
         return
     context = event.object
-    request = makerequest()
+    request = context.REQUEST
     mail_template = getMultiAdapter((context, request),
                                     name='updated_sd_mail')
     site_title = context.portal_properties.site_properties.title
@@ -104,7 +89,7 @@ def serviceDescriptionUpdated(event):
     if not mail_to:
         return
 
-    request = makerequest()
+    request = context.REQUEST
     site_title = context.portal_properties.site_properties.title
     mail_template = getMultiAdapter((context, request),
                                     name='updated_sd_mail')
