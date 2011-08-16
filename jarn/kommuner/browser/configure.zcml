@@ -107,7 +107,7 @@
     permission="zope.Public"
   />
 
-
+  <!-- Tema portlet -->
   <plone:portlet
       name="portlets.LOS"
       interface=".los_portlet.ILOSPortlet"
@@ -116,5 +116,12 @@
       addview=".los_portlet.AddForm"
   />
 
+  <!-- In-context breadcrumbs for service descriptions -->
+  <browser:page
+      for="jarn.kommuner.interfaces.IServiceDescription"
+      name="breadcrumbs_view"
+      class=".navigation.URLNavigationBreadcrumbs"
+      permission="zope2.View"
+  />
 
 </configure>
