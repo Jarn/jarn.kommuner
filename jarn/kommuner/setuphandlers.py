@@ -1,11 +1,11 @@
 import os
 import xml.etree.ElementTree as ET
 
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 
 from jarn.kommuner.interfaces import ILOSWords
+from jarn.kommuner.utils import id_from_title
 
 DEFAULT_POLICIES = ('at_edit_autoversion', 'version_on_revert')
 TYPES_TO_VERSION = ['ServiceDescription']
@@ -130,12 +130,10 @@ def setupLOSContent(context):
     for topic_id in existing:
         del tema_folder[topic_id]
 
-    id_normalizer = getUtility(IIDNormalizer)
-
     for elem in main_topics:
         title = unicode(elem.find('namn').text)
         topic_id = elem.find('identifikator').text
-        folder_id = tema_folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
+        folder_id = tema_folder.invokeFactory('LOSCategory', id_from_title(title),
             title=title, losId=topic_id)
         folder = tema_folder[folder_id]
         folder.unmarkCreationFlag()
@@ -152,7 +150,7 @@ def setupLOSContent(context):
                 if subtopic_id in synonym_ids:
                     subtopic_synonym_ids = synonym_ids[subtopic_id]
 
-                subfolder_id = folder.invokeFactory('LOSCategory', id_normalizer.normalize(title),
+                subfolder_id = folder.invokeFactory('LOSCategory', id_from_title(title),
                     title=title, losId=subtopic_id, synonyms=subtopic_synonyms, synonymIds=subtopic_synonym_ids)
                 subfolder = folder[subfolder_id]
                 subfolder.unmarkCreationFlag()

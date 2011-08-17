@@ -3,13 +3,13 @@ import re, htmlentitydefs
 from datetime import datetime
 
 from Acquisition import aq_parent
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from zope.event import notify
 
 from jarn.kommuner import sd_client
+from jarn.kommuner.utils import id_from_title
 from jarn.kommuner.interfaces import ILOSWords
 from jarn.kommuner.interfaces import ServiceDescriptionUpdated
 from jarn.kommuner.interfaces import ServiceDescriptionCreated
@@ -124,14 +124,13 @@ def importActiveServiceDescriptions(context):
 
     active_sd_ids = [sd['tjenestebeskrivelseID']
                      for sd in sd_client.getActiveNorwegianServiceDescriptionsOverview()]
-    id_normalizer = getUtility(IIDNormalizer)
     for sd_id in active_sd_ids:
         internal_id = sd_id['tjenesteID']
         data = getServiceDescriptionData(context, sd_id)
         text = context.restrictedTraverse('@@sd-template')(data=data)
         los_categories = [brain.getObject() for brain in data['topic_refs']]
         logger.info("Creating service description '%s'" % data['title'])
-        new_id = context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
+        new_id = context.invokeFactory('ServiceDescription', id_from_title(data['title']),
             serviceId=internal_id, title=data['title'], description=data['description'],
             nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
         context[new_id].unmarkCreationFlag()
@@ -143,7 +142,6 @@ def importActiveServiceDescriptions(context):
 def updateActiveServiceDescriptions(context):
     ct = getToolByName(context, 'portal_catalog')
     registry = getUtility(IRegistry)
-    id_normalizer = getUtility(IIDNormalizer)
     last_update = registry['jarn.kommuner.lastUpdate']
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
     updated_ids = [
@@ -160,7 +158,7 @@ def updateActiveServiceDescriptions(context):
         if not sd:
             internal_id = sd_id['tjenesteID']
             logger.info("Creating service description '%s'" % data['title'])
-            new_id = context.invokeFactory('ServiceDescription', id_normalizer.normalize(data['title']),
+            new_id = context.invokeFactory('ServiceDescription', id_from_title(data['title']),
                 serviceId=internal_id, title=data['title'], description=data['description'],
                 nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
             context[new_id].unmarkCreationFlag()
