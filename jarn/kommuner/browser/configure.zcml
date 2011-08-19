@@ -23,6 +23,7 @@
   <browser:page
     for="jarn.kommuner.interfaces.IServiceDescription"
     name="base_view"
+    class=".sd.ServiceDescriptionView"
     template="sd.pt"
     permission="zope2.View"
   />
