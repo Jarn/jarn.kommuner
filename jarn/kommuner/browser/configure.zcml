@@ -103,8 +103,8 @@
 
   <browser:page
     for="*"
-    name="updated_sd_mail"
-    template="updated_sd_mail_template.pt"
+    name="sd_mail"
+    template="sd_mail.pt"
     permission="zope.Public"
   />
 

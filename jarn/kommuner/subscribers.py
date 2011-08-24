@@ -23,7 +23,7 @@ def serviceDescriptionCreated(event):
     context = event.object
     request = context.REQUEST
     mail_template = getMultiAdapter((context, request),
-                                    name='updated_sd_mail')
+                                    name='sd_mail')
     site_title = context.portal_properties.site_properties.title
     mail_text = mail_template(
                          sd_title=context.Title(),
@@ -92,7 +92,7 @@ def serviceDescriptionUpdated(event):
     request = context.REQUEST
     site_title = context.portal_properties.site_properties.title
     mail_template = getMultiAdapter((context, request),
-                                    name='updated_sd_mail')
+                                    name='sd_mail')
     mail_text = mail_template(
                          sd_title=wc.Title(),
                          sd_url=wc.absolute_url(),
