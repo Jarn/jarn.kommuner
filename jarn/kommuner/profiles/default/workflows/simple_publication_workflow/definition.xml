@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="plone"
+             workflow_id="simple_publication_workflow">
+
+ <transition transition_id="publish" new_state="published">
+  <guard>
+   <guard-expression>not:object/@@is_working_copy</guard-expression>
+  </guard>
+ </transition>
+
+ <transition transition_id="submit" new_state="pending">
+  <guard>
+   <guard-expression>not:object/@@is_working_copy</guard-expression>
+  </guard>
+ </transition>
+
+</dc-workflow>

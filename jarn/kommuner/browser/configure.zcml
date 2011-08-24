@@ -125,4 +125,12 @@
       permission="zope2.View"
   />
 
+  <!-- is_working_copy -->
+  <browser:view
+    for="*"
+    name="is_working_copy"
+    class=".workflow.IsWorkingCopyView"
+    permission="zope2.View"
+    />
+
 </configure>
