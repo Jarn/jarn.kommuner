@@ -3,26 +3,44 @@
              i18n:domain="plone"
              workflow_id="simple_publication_workflow"
              title="Simple Publication Workflow"
+             description="
+- Simple workflow that is useful for basic web sites.
+- Things start out as private, and can either be submitted for review, or published directly.
+- The creator of a content item can edit the item even after it is published."
              state_variable="review_state"
              initial_state="private"
-             i18n:attributes="title">
+             i18n:attributes="title; description">
 
  <transition transition_id="publish" new_state="published"
              title="Reviewer publishes content"
              trigger="USER"
              before_script="" after_script=""
              i18n:attributes="title">
+  <description i18n:translate="">
+    Publishing the item makes it visible to other users.
+  </description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=publish"
+          category="workflow"
+          i18n:translate="">Publish</action>
   <guard>
+   <guard-permission>Review portal content</guard-permission>
    <guard-expression>not:object/@@is_working_copy</guard-expression>
   </guard>
  </transition>
 
- <transition transition_id="submit" new_state="pending"
+ <transition transition_id="submit"  new_state="pending"
              title="Member submits content for publication"
              trigger="USER"
              before_script="" after_script=""
              i18n:attributes="title">
+  <description i18n:translate="">
+    Puts your item in a review queue, so it can be published on the site.
+  </description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=submit"
+          category="workflow"
+          i18n:translate="">Submit for publication</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
    <guard-expression>not:object/@@is_working_copy</guard-expression>
   </guard>
  </transition>
