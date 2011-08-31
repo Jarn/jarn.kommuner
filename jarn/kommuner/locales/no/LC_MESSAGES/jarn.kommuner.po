@@ -61,7 +61,7 @@ msgstr ""
 #: ./browser/sd.pt:20
 #: ./content/service_description.py:82
 msgid "Contact persons"
-msgstr "Kontaktpersoner"
+msgstr "Kontaktinformasjon"
 
 #: ./content/person.py:52
 msgid "Contact phone number"
