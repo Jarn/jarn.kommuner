@@ -75,7 +75,7 @@
           </li>
         </ul>
       </tal:services>
-      </br>
+      <br/>
       <tal:other tal:define="other_contents view/other_contents" tal:condition="other_contents">
         <ul>
           <li tal:repeat="item other_contents">
