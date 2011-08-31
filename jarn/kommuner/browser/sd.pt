@@ -20,7 +20,8 @@
       <h3 i18n:translate="">Contact persons</h3>
       <metal:contacts tal:define="contacts context/getContacts" tal:repeat="contact contacts">
               <a href="#" tal:attributes="href python:contact.absolute_url();
-                                          title string:${contact/title} - ${contact/description}">
+                                          title string:${contact/title} - ${contact/description}"
+                          tal:condition="exists: contact/photo_thumb">
                   <img src="" alt="" title="" class="photo image-left"
                        tal:attributes="src python:contact.absolute_url() + '/photo_thumb';
                                        alt string:${contact/title} - ${contact/description}" />
