@@ -24,7 +24,7 @@ msgstr "LOS kategori"
 
 #: ./profiles/default/types/Person.xml
 msgid "A Person"
-msgstr ""
+msgstr "Personer"
 
 #: ./profiles/default/portlets.xml
 msgid "A portlet which shows the main LOS topics."
@@ -32,7 +32,7 @@ msgstr "Infoboks som beskriver LOS hovedemner"
 
 #: ./content/person.py:61
 msgid "A portrait of the person."
-msgstr ""
+msgstr "Bilde av kontakten"
 
 #: ./profiles/default/types/ServiceDescription.xml
 msgid "A service description"
@@ -56,7 +56,7 @@ msgstr "Klage"
 
 #: ./content/person.py:43
 msgid "Contact email address."
-msgstr ""
+msgstr "Kontaktens e-postadresse"
 
 #: ./browser/sd.pt:20
 #: ./content/service_description.py:82
@@ -65,7 +65,7 @@ msgstr "Kontaktinformasjon"
 
 #: ./content/person.py:52
 msgid "Contact phone number"
-msgstr ""
+msgstr "Kontaktens telefonnummer"
 
 #: ./browser/sd_template.pt:20
 msgid "Criteria"
@@ -77,7 +77,7 @@ msgstr "Søknadsfrist"
 
 #: ./content/person.py:69
 msgid "Department"
-msgstr ""
+msgstr "Avdeling"
 
 #: ./browser/sd_template.pt:10
 msgid "Description"
@@ -89,7 +89,7 @@ msgstr "Varighet"
 
 #: ./content/person.py:42
 msgid "Email address"
-msgstr ""
+msgstr "E-postadresse"
 
 #: ./browser/sd_template.pt:64
 msgid "Form"
@@ -101,7 +101,7 @@ msgstr "Forside"
 
 #: ./content/person.py:77
 msgid "Fullname"
-msgstr ""
+msgstr "Fullt navnt"
 
 #: ./browser/sd_template.pt:7
 msgid "General"
@@ -117,7 +117,7 @@ msgstr "Bilde"
 
 #: ./content/person.py:33
 msgid "Job title"
-msgstr ""
+msgstr "Tittel"
 
 #: ./profiles/default/types/LOSCategory.xml
 msgid "LOS Category"
@@ -165,15 +165,15 @@ msgstr "Partnere"
 
 #: ./profiles/default/types/Person.xml
 msgid "Person"
-msgstr ""
+msgstr "Kontakt"
 
 #: ./content/person.py:51
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: ./content/person.py:60
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: ./browser/sd_template.pt:25
 msgid "Price"
@@ -226,7 +226,7 @@ msgstr "Tema infoboks"
 
 #: ./content/person.py:34
 msgid "The position the person holds."
-msgstr ""
+msgstr "Stillingsbetegnelse"
 
 #: ./browser/sd_template.pt:102
 msgid "Updated"
@@ -239,5 +239,5 @@ msgstr "Gyldig fra"
 #. Default: "Body Text"
 #: ./content/person.py:26
 msgid "label_body_text"
-msgstr ""
+msgstr "Brødtekst"
 
