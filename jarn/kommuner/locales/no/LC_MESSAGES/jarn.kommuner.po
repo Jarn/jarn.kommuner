@@ -137,7 +137,7 @@ msgstr "LOS infoboks"
 
 #: ./content/los.py:34
 msgid "LOS text"
-msgstr "LOS tekst"
+msgstr "Brødtekst"
 
 #: ./browser/sd_template.pt:40
 msgid "Laws"
@@ -206,7 +206,7 @@ msgstr "Tjeneste beskrivelse tekst"
 #: ./browser/los.pt:69
 #: ./content/los.py:48
 msgid "Services"
-msgstr "Tjenester"
+msgstr "Tjenestetilbudet"
 
 #: ./content/los.py:63
 msgid "Synonym Ids"
