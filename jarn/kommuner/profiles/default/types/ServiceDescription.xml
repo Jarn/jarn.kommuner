@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">A service description</property>
   <property name="content_meta_type">ServiceDescription</property>
-  <property name="content_icon"></property>
+  <property name="content_icon">servicedescription_icon.gif</property>
   <property name="product">jarn.kommuner</property>
   <property name="factory">addServiceDescription</property>
   <property name="immediate_view">atct_edit</property>
