@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_skins" allow_any="False" cookie_persistence="False">
+
+ <object name="kommuner_images"
+    meta_type="Filesystem Directory View"
+    directory="jarn.kommuner:skins/kommuner_images"/>
+
+ <skin-path name="*">
+ <layer name="kommuner_images" insert-after="custom"/>
+ </skin-path>
+
+</object>
