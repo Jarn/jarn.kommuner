@@ -6,7 +6,7 @@
     </field>
     <value purge="false">http://www.nasjonaltjenestekatalog.no/ws7/katalog?wsdl</value>
   </record>
-
+<!--
   <record name="jarn.kommuner.katalogUserID">
     <field type="plone.registry.field.ASCIILine">
       <title>Katalog User ID</title>
@@ -19,6 +19,20 @@
       <title>Katalog User Password</title>
     </field>
     <value purge="false">J63evHux5Y9T</value>
+  </record>
+-->
+  <record name="jarn.kommuner.katalogUserID">
+    <field type="plone.registry.field.ASCIILine">
+      <title>Katalog User ID</title>
+    </field>
+    <value purge="false">29811</value>
+  </record>
+
+  <record name="jarn.kommuner.katalogUserPassword">
+    <field type="plone.registry.field.Password">
+      <title>Katalog User Password</title>
+    </field>
+    <value purge="false">ge_77_k</value>
   </record>
 
   <record name="jarn.kommuner.lastUpdate">

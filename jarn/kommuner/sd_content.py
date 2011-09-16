@@ -123,7 +123,7 @@ def importActiveServiceDescriptions(context):
         del parent[obj.id]
 
     active_sd_ids = [sd['tjenestebeskrivelseID']
-                     for sd in sd_client.getActiveNorwegianServiceDescriptionsOverview()]
+                     for sd in sd_client.getActiveServiceDescriptionsOverview()]
     for sd_id in active_sd_ids:
         internal_id = sd_id['tjenesteID']
         data = getServiceDescriptionData(context, sd_id)
@@ -146,7 +146,7 @@ def updateActiveServiceDescriptions(context):
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
     updated_ids = [
         sd['tjenestebeskrivelseID']
-        for sd in sd_client.getUpdatedNorwegianServiceDescriptions(last_update)]
+        for sd in sd_client.getUpdatedServiceDescriptions(last_update)]
 
     for sd_id in updated_ids:
         data = getServiceDescriptionData(context, sd_id)
