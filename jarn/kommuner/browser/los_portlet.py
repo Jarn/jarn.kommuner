@@ -6,12 +6,13 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import implements
+from plone.app.layout.navigation.root import getNavigationRoot
 
 from jarn.kommuner import kommunerMessageFactory as _
 
 
 class ILOSPortlet(IPortletDataProvider):
-    """A portlet to render open calls for proposal
+    """A portlet that shows the top-level LOS categories.
     """
 
 
@@ -30,10 +31,10 @@ class Renderer(base.Renderer):
 
     def LOS(self):
         context = aq_inner(self.context)
-        portal = getToolByName(context, 'portal_url').getPortalObject()
-        if 'tema' not in portal:
+        root = context.restrictedTraverse(getNavigationRoot(context))
+        if 'tema' not in root:
             return []
-        tema = portal['tema']
+        tema = root['tema']
         tema_path = '/'.join(tema.getPhysicalPath())
         ct = getToolByName(context, 'portal_catalog')
         return ct.searchResults(
