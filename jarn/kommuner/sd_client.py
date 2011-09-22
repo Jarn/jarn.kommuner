@@ -36,12 +36,12 @@ def _getActiveServiceDescriptionsOverview():
 
 
 def getActiveServiceDescriptionsOverview(lang='no', country=None, variant=None):
-    active = _getActiveServiceDescriptionsOverview()
+    all_lang = _getActiveServiceDescriptionsOverview()
     if lang == 'no':
         country = 'NO'
 
     lang_specific = [item
-        for item in active
+        for item in all_lang
         if item['tjenestebeskrivelseID']['land'] == country and
         item['tjenestebeskrivelseID']['sprak'] == lang and
         item['tjenestebeskrivelseID']['variant'] == variant]
