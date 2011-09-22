@@ -115,24 +115,26 @@ def getServiceDescriptionData(context, sd_id):
 
 
 def importActiveServiceDescriptions(context):
+    lang = context.Language() or 'no'
     ct = getToolByName(context, 'portal_catalog')
-    existing = ct.unrestrictedSearchResults(portal_type='ServiceDescription')
+    existing = ct.unrestrictedSearchResults(portal_type='ServiceDescription', Language=lang)
     for brain in list(existing):
         obj = brain.getObject()
         parent = aq_parent(obj)
-        del parent[obj.id]
+        del parent[obj.getId()]
 
     active_sd_ids = [sd['tjenestebeskrivelseID']
-                     for sd in sd_client.getActiveServiceDescriptionsOverview()]
+                     for sd in sd_client.getActiveServiceDescriptionsOverview(lang=lang)]
     for sd_id in active_sd_ids:
         internal_id = sd_id['tjenesteID']
         data = getServiceDescriptionData(context, sd_id)
         text = context.restrictedTraverse('@@sd-template')(data=data)
         los_categories = [brain.getObject() for brain in data['topic_refs']]
         logger.info("Creating service description '%s'" % data['title'])
-        new_id = context.invokeFactory('ServiceDescription', id_from_title(data['title']),
+        new_id = context.invokeFactory('ServiceDescription', id_from_title(data['title'], locale=lang),
             serviceId=internal_id, title=data['title'], description=data['description'],
-            nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
+            nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'],
+            language=lang)
         context[new_id].unmarkCreationFlag()
     registry = getUtility(IRegistry)
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
@@ -140,27 +142,28 @@ def importActiveServiceDescriptions(context):
 
 
 def updateActiveServiceDescriptions(context):
+    lang = context.Language() or 'no'
     ct = getToolByName(context, 'portal_catalog')
     registry = getUtility(IRegistry)
     last_update = registry['jarn.kommuner.lastUpdate']
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
-    updated_ids = [
-        sd['tjenestebeskrivelseID']
-        for sd in sd_client.getUpdatedServiceDescriptions(last_update)]
 
+    updated_ids = [sd['tjenestebeskrivelseID']
+                   for sd in sd_client.getUpdatedServiceDescriptions(last_update, lang=lang)]
     for sd_id in updated_ids:
         data = getServiceDescriptionData(context, sd_id)
         text = context.restrictedTraverse('@@sd-template')(data=data)
         los_categories = [brain.getObject() for brain in data['topic_refs']]
 
-        sd = ct.unrestrictedSearchResults(serviceId=sd_id['tjenesteID'])
+        sd = ct.unrestrictedSearchResults(serviceId=sd_id['tjenesteID'], Language=lang)
 
         if not sd:
             internal_id = sd_id['tjenesteID']
             logger.info("Creating service description '%s'" % data['title'])
-            new_id = context.invokeFactory('ServiceDescription', id_from_title(data['title']),
+            new_id = context.invokeFactory('ServiceDescription', id_from_title(data['title'], locale=lang),
                 serviceId=internal_id, title=data['title'], description=data['description'],
-                nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'])
+                nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'],
+                language=lang)
             context[new_id].unmarkCreationFlag()
             ev = ServiceDescriptionCreated(context[context_id])
             notify(ev)
