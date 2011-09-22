@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-04 22:38+0000\n"
+"POT-Creation-Date: 2011-09-22 13:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgid "Contact email address."
 msgstr ""
 
 #: ./browser/sd.pt:20
-#: ./content/service_description.py:82
+#: ./content/service_description.py:83
 msgid "Contact persons"
 msgstr ""
 
@@ -130,11 +130,11 @@ msgstr ""
 msgid "LOS Id"
 msgstr ""
 
-#: ./content/service_description.py:59
+#: ./content/service_description.py:60
 msgid "LOS categories"
 msgstr ""
 
-#: ./browser/los_portlet.py:21
+#: ./browser/los_portlet.py:22
 msgid "LOS portlet"
 msgstr ""
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Laws"
 msgstr ""
 
-#: ./content/service_description.py:38
+#: ./content/service_description.py:39
 msgid "National catalog text"
 msgstr ""
 
@@ -156,10 +156,6 @@ msgstr ""
 
 #: ./browser/sd_template.pt:99
 msgid "Other"
-msgstr ""
-
-#: ./browser/los.pt:80
-msgid "Other content"
 msgstr ""
 
 #: ./browser/sd_template.pt:30
@@ -198,11 +194,11 @@ msgstr ""
 msgid "Service Description"
 msgstr ""
 
-#: ./content/service_description.py:73
+#: ./content/service_description.py:74
 msgid "Service Id"
 msgstr ""
 
-#: ./content/service_description.py:49
+#: ./content/service_description.py:50
 msgid "Service description text"
 msgstr ""
 

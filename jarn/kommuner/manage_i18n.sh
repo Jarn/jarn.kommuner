@@ -16,7 +16,7 @@ CURRENT_PATH=`pwd`
 CATALOGNAME="jarn.kommuner"
 
 # List of languages
-LANGUAGES="en no"
+LANGUAGES="en no fr ar ru tr"
 
 # Create locales folder structure for languages
 install -d locales
