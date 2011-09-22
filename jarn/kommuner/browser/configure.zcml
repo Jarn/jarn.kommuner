@@ -80,6 +80,22 @@
       description=""
       />
 
+  <browser:page
+      name="tema_sd_view"
+      for="Products.ATContentTypes.interfaces.IATFolder"
+      class=".tema.TemaServiceDescriptionView"
+      template="tema_sd.pt"
+      permission="zope2.View"
+  />
+
+  <browser:menuItem
+      for="Products.ATContentTypes.interfaces.IATFolder"
+      menu="plone_displayviews"
+      title="Tema SD view"
+      action="tema_sd_view"
+      description=""
+      />
+
   <browser:view
     for="plone.folder.interfaces.IFolder"
     name="import-catalog"
