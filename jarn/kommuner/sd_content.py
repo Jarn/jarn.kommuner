@@ -114,6 +114,12 @@ def getServiceDescriptionData(context, sd_id):
     }
 
 
+def linkTranslation(translation, serviceId):
+    ct = getToolByName(translation, 'portal_catalog')
+    canonical = ct.unrestrictedSearchResults(serviceId=serviceId, Language='no')
+    translation.addTranslationReference(canonical[0].getObject())
+
+
 def importActiveServiceDescriptions(context):
     lang = context.Language() or 'no'
     ct = getToolByName(context, 'portal_catalog')
@@ -136,6 +142,8 @@ def importActiveServiceDescriptions(context):
             nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'],
             language=lang)
         context[new_id].unmarkCreationFlag()
+        if lang != 'no':
+            linkTranslation(context[new_id], internal_id)
     registry = getUtility(IRegistry)
     registry['jarn.kommuner.lastUpdate'] = datetime.now()
     logger.info('done')
@@ -165,6 +173,8 @@ def updateActiveServiceDescriptions(context):
                 nationalText=text, text=text, los_categories=los_categories, subject=data['keywords'],
                 language=lang)
             context[new_id].unmarkCreationFlag()
+            if lang != 'no':
+                linkTranslation(context[new_id], internal_id)
             ev = ServiceDescriptionCreated(context[context_id])
             notify(ev)
         else:
