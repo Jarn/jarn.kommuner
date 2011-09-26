@@ -145,7 +145,11 @@ def importActiveServiceDescriptions(context):
         if lang != 'no':
             linkTranslation(context[new_id], internal_id)
     registry = getUtility(IRegistry)
-    registry['jarn.kommuner.lastUpdate'] = datetime.now()
+
+    # XXX: Should store time per language
+    if lang == 'no':
+        registry['jarn.kommuner.lastUpdate'] = datetime.now()
+
     logger.info('done')
 
 
@@ -154,7 +158,10 @@ def updateActiveServiceDescriptions(context):
     ct = getToolByName(context, 'portal_catalog')
     registry = getUtility(IRegistry)
     last_update = registry['jarn.kommuner.lastUpdate']
-    registry['jarn.kommuner.lastUpdate'] = datetime.now()
+
+    # XXX: Should store time per language
+    if lang == 'no':
+        registry['jarn.kommuner.lastUpdate'] = datetime.now()
 
     updated_ids = [sd['tjenestebeskrivelseID']
                    for sd in sd_client.getUpdatedServiceDescriptions(last_update, lang=lang)]
