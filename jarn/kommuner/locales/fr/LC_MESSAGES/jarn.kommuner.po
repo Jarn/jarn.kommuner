@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-22 13:42+0000\n"
+"POT-Creation-Date: 2011-09-26 09:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,8 +9,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
@@ -20,108 +20,108 @@ msgstr ""
 
 #: ./profiles/default/types/LOSCategory.xml
 msgid "A LOS Category"
-msgstr ""
+msgstr "LOS kategori"
 
 #: ./profiles/default/types/Person.xml
 msgid "A Person"
-msgstr ""
+msgstr "Personer"
 
 #: ./profiles/default/portlets.xml
 msgid "A portlet which shows the main LOS topics."
-msgstr ""
+msgstr "Infoboks som beskriver LOS hovedemner"
 
 #: ./content/person.py:61
 msgid "A portrait of the person."
-msgstr ""
+msgstr "Bilde av kontakten"
 
 #: ./profiles/default/types/ServiceDescription.xml
 msgid "A service description"
-msgstr ""
+msgstr "Tjenestebeskrivelse"
 
 #: ./browser/sd_template.pt:51
 msgid "Application"
-msgstr ""
+msgstr "Demande"
 
 #: ./browser/sd_template.pt:59
 msgid "Attachments"
-msgstr ""
+msgstr "Attachment"
 
 #: ./browser/sd_template.pt:35
 msgid "Brochures"
-msgstr ""
+msgstr "Brochures / documents"
 
 #: ./browser/sd_template.pt:79
 msgid "Complaint"
-msgstr ""
+msgstr "Plaintes"
 
 #: ./content/person.py:43
 msgid "Contact email address."
-msgstr ""
+msgstr "Kontaktens e-postadresse"
 
 #: ./browser/sd.pt:20
 #: ./content/service_description.py:83
 msgid "Contact persons"
-msgstr ""
+msgstr "Contact"
 
 #: ./content/person.py:52
 msgid "Contact phone number"
-msgstr ""
+msgstr "Kontaktens telefonnummer"
 
 #: ./browser/sd_template.pt:20
 msgid "Criteria"
-msgstr ""
+msgstr "Critères / conditions"
 
 #: ./browser/sd_template.pt:84
 msgid "Deadline"
-msgstr ""
+msgstr "Date limite"
 
 #: ./content/person.py:69
 msgid "Department"
-msgstr ""
+msgstr "Avdeling"
 
 #: ./browser/sd_template.pt:10
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: ./browser/sd_template.pt:89
 msgid "Duration"
-msgstr ""
+msgstr "Durée"
 
 #: ./content/person.py:42
 msgid "Email address"
-msgstr ""
+msgstr "E-postadresse"
 
 #: ./browser/sd_template.pt:64
 msgid "Form"
-msgstr ""
+msgstr "Formulaire"
 
 #: ./profiles/default/types/Frontpage.xml
 msgid "Frontpage"
-msgstr ""
+msgstr "Forside"
 
 #: ./content/person.py:77
 msgid "Fullname"
-msgstr ""
+msgstr "Fullt navnt"
 
 #: ./browser/sd_template.pt:7
 msgid "General"
-msgstr ""
+msgstr "Informations générales"
 
 #: ./browser/sd_template.pt:54
 msgid "Guidelines"
-msgstr ""
+msgstr "Guide"
 
 #: ./content/los.py:39
 msgid "Image"
-msgstr ""
+msgstr "Bilde"
 
 #: ./content/person.py:33
 msgid "Job title"
-msgstr ""
+msgstr "Tittel"
 
 #: ./profiles/default/types/LOSCategory.xml
 msgid "LOS Category"
-msgstr ""
+msgstr "LOS kategori"
 
 #: ./content/los.py:25
 msgid "LOS Id"
@@ -129,67 +129,67 @@ msgstr ""
 
 #: ./content/service_description.py:60
 msgid "LOS categories"
-msgstr ""
+msgstr "LOS kategorier"
 
 #: ./browser/los_portlet.py:22
 msgid "LOS portlet"
-msgstr ""
+msgstr "LOS infoboks"
 
 #: ./content/los.py:34
 msgid "LOS text"
-msgstr ""
+msgstr "Brødtekst"
 
 #: ./browser/sd_template.pt:40
 msgid "Laws"
-msgstr ""
+msgstr "Réglementaires"
 
 #: ./content/service_description.py:39
 msgid "National catalog text"
-msgstr ""
+msgstr "Nasjonal tjenestekatalog"
 
 #: ./browser/sd_template.pt:74
 msgid "Notes"
-msgstr ""
+msgstr "Pratiques informations"
 
 #: ./browser/sd_template.pt:99
 msgid "Other"
-msgstr ""
+msgstr "Autres informations"
 
 #: ./browser/sd_template.pt:30
 msgid "Partners"
-msgstr ""
+msgstr "Partenaires"
 
 #: ./profiles/default/types/Person.xml
 msgid "Person"
-msgstr ""
+msgstr "Kontakt"
 
 #: ./content/person.py:51
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: ./content/person.py:60
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #: ./browser/sd_template.pt:25
 msgid "Price"
-msgstr ""
+msgstr "Prix"
 
 #: ./browser/sd_template.pt:94
 msgid "Processing"
-msgstr ""
+msgstr "Procédure"
 
 #: ./browser/sd_template.pt:69
 msgid "Recipient"
-msgstr ""
+msgstr "Récepteur"
 
 #: ./browser/sd.pt:16
 msgid "See also"
-msgstr ""
+msgstr "Voir aussi"
 
 #: ./profiles/default/types/ServiceDescription.xml
 msgid "Service Description"
-msgstr ""
+msgstr "Tjenestebeskrivelse"
 
 #: ./content/service_description.py:74
 msgid "Service Id"
@@ -197,12 +197,12 @@ msgstr ""
 
 #: ./content/service_description.py:50
 msgid "Service description text"
-msgstr ""
+msgstr "Tjeneste beskrivelse tekst"
 
 #: ./browser/los.pt:69
 #: ./content/los.py:48
 msgid "Services"
-msgstr ""
+msgstr "Tjenestetilbudet"
 
 #: ./content/los.py:63
 msgid "Synonym Ids"
@@ -210,30 +210,30 @@ msgstr ""
 
 #: ./content/los.py:56
 msgid "Synonyms"
-msgstr ""
+msgstr "Synonymer"
 
 #: ./browser/sd_template.pt:15
 msgid "Target group"
-msgstr ""
+msgstr "Cible"
 
 #: ./profiles/default/portlets.xml
 msgid "Tema Portlet"
-msgstr ""
+msgstr "Tema infoboks"
 
 #: ./content/person.py:34
 msgid "The position the person holds."
-msgstr ""
+msgstr "Stillingsbetegnelse"
 
 #: ./browser/sd_template.pt:102
 msgid "Updated"
-msgstr ""
+msgstr "Mis à jour le"
 
 #: ./browser/sd_template.pt:107
 msgid "Valid from"
-msgstr ""
+msgstr "Efficace des"
 
 #. Default: "Body Text"
 #: ./content/person.py:26
 msgid "label_body_text"
-msgstr ""
+msgstr "Brødtekst"
 
