@@ -40,6 +40,7 @@ class Renderer(base.Renderer):
         return ct.searchResults(
             portal_type='LOSCategory',
             path={'query': tema_path, 'depth':1},
+            Language=tema.Language(),
             sort_on='sortable_title')
 
 
