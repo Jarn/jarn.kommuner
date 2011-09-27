@@ -131,6 +131,7 @@ def importActiveServiceDescriptions(context):
 
     active_sd_ids = [sd['tjenestebeskrivelseID']
                      for sd in sd_client.getActiveServiceDescriptionsOverview(lang=lang)]
+    pu = getToolByName(context, 'plone_utils')
     for sd_id in active_sd_ids:
         internal_id = sd_id['tjenesteID']
         data = getServiceDescriptionData(context, sd_id)
@@ -144,6 +145,8 @@ def importActiveServiceDescriptions(context):
         context[new_id].unmarkCreationFlag()
         if lang != 'no':
             linkTranslation(context[new_id], internal_id)
+        pu.changeOwnershipOf(context[new_id], 'updater')
+        context[new_id].reindexObject()
     registry = getUtility(IRegistry)
 
     # XXX: Should store time per language
@@ -165,6 +168,7 @@ def updateActiveServiceDescriptions(context):
 
     updated_ids = [sd['tjenestebeskrivelseID']
                    for sd in sd_client.getUpdatedServiceDescriptions(last_update, lang=lang)]
+    pu = getToolByName(context, 'plone_utils')
     for sd_id in updated_ids:
         data = getServiceDescriptionData(context, sd_id)
         text = context.restrictedTraverse('@@sd-template')(data=data)
@@ -182,6 +186,8 @@ def updateActiveServiceDescriptions(context):
             context[new_id].unmarkCreationFlag()
             if lang != 'no':
                 linkTranslation(context[new_id], internal_id)
+            pu.changeOwnershipOf(context[new_id], 'updater')
+            context[new_id].reindexObject()
             ev = ServiceDescriptionCreated(context[context_id])
             notify(ev)
         else:
