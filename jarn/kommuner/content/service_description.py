@@ -41,7 +41,7 @@ ServiceDescriptionSchema = ATContentTypeSchema.copy() + atapi.Schema((
     ),
     atapi.TextField('text',
         required=False,
-        searchable=False,
+        searchable=True,
         storage = AnnotationStorage(migrate=True),
         validators = ('isTidyHtmlWithCleanup', ),
         default_output_type = 'text/x-html-safe',
