@@ -64,7 +64,6 @@ class KommunerLayer(PloneSandboxLayer):
         # Install into Plone site using portal_setup
         portal.portal_workflow.setDefaultChain('simple_publication_workflow')
         applyProfile(portal, 'jarn.kommuner:default')
-        #applyProfile(portal, 'jarn.kommuner:kommunes-content')
         setRoles(portal, TEST_USER_ID, ['Manager'])
         portal.invokeFactory('Folder', 'test-folder')
         setRoles(portal, TEST_USER_ID, ['Member'])

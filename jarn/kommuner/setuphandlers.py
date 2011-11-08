@@ -51,7 +51,7 @@ def setupKeywords(context):
 
 
 def setupLOSContent(context):
-    if context.readDataFile('kommunes-content.txt') is None:
+    if context.readDataFile('kommuner-content.txt') is None:
         return
     parents = dict()
     synonyms = dict()

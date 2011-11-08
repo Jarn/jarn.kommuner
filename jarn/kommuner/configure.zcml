@@ -67,23 +67,23 @@
   <genericsetup:importStep
       name="Versioning"
       title="Versioning"
-      description="Import LOS keywords."
+      description="Setup versioned types."
       handler=".setuphandlers.setVersionedTypes">
       <depends name="types"/>
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
-      name="kommunes-content"
-      title="Norwegian Communes content setup"
+      name="content"
+      title="Norwegian Communes + LOS"
       directory="profiles/content"
-      description="Extension profile to configure initial content"
+      description="Installs the jarn.kommuner add-on + LOS structure"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <genericsetup:importStep
-      name="kommunes-content"
-      title="Kommunes content"
+      name="los-content"
+      title="LOS content"
       description="Import LOS structure."
       handler=".setuphandlers.setupLOSContent">
   </genericsetup:importStep>
