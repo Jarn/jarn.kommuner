@@ -88,4 +88,20 @@
       handler=".setuphandlers.setupLOSContent">
   </genericsetup:importStep>
 
+  <genericsetup:registerProfile
+      name="multilang"
+      title="Norwegian Communes + LOS + Languages"
+      directory="profiles/multilang"
+      description="Installs the jarn.kommuner add-on + LOS structure + languages"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="multilang-content"
+      title="Language content"
+      description="Create language folders."
+      handler=".setuphandlers.setupLanguageFolders">
+  </genericsetup:importStep>
+
 </configure>

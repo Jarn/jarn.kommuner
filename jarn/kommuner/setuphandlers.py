@@ -156,3 +156,8 @@ def setupLOSContent(context):
                 subfolder.unmarkCreationFlag()
                 wftool.doActionFor(subfolder, 'publish')
                 subfolder.reindexObject()
+
+
+def setupLanguageFolders(context):
+    pass
+
