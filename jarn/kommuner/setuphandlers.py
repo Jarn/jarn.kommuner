@@ -1,9 +1,16 @@
+# -*- coding: utf-8 -*-
+
 import os
+import transaction
 import xml.etree.ElementTree as ET
 
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
+from zope.component import getMultiAdapter
+from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletAssignmentMapping
 
+from plone.app.upgrade.utils import loadMigrationProfile
 from jarn.kommuner.interfaces import ILOSWords
 from jarn.kommuner.utils import id_from_title
 
@@ -38,7 +45,7 @@ def setVersionedTypes(context):
 
 
 def setupKeywords(context):
-    if context.readDataFile('kommunes-keywords.txt') is None:
+    if context.readDataFile('kommuner-keywords.txt') is None:
         return
     xml_file = os.path.join(os.path.dirname(__file__), 'data', 'los-alt.xml')
     tree = ET.parse(xml_file)
@@ -159,5 +166,101 @@ def setupLOSContent(context):
 
 
 def setupLanguageFolders(context):
-    pass
+    if context.readDataFile('kommuner-multilang.txt') is None:
+        return
+    portal = context.getSite()
+    setup = getToolByName(portal, 'portal_setup')
+    loadMigrationProfile(portal, 'profile-Products.LinguaPlone:LinguaPlone')
+    setup.runImportStepFromProfile('profile-jarn.kommuner:default', 'typeinfo')
+    setup.runImportStepFromProfile('profile-jarn.kommuner:default', 'skins')
+    transaction.savepoint(True)
+    setup.runImportStepFromProfile('profile-jarn.kommuner:multilang-helper', 'languagetool')
+    transaction.savepoint(True)
+    portal.restrictedTraverse('@@language-setup-folders')()
+    transaction.savepoint(True)
+    setup.runImportStepFromProfile('profile-jarn.kommuner:multilang-helper', 'viewlets')
+    setup.runImportStepFromProfile('profile-jarn.kommuner:multilang-helper', 'portlets')
+    portal.setLayout('uncached-language-switcher')
+
+    langs = ['no', 'en', 'fr', 'ar', 'ru', 'tr']
+
+    # Move content to /no folder
+    ct = getToolByName(portal, 'portal_catalog')
+    keep = langs
+    move = ct.unrestrictedSearchResults(path={'query':portal.getId(), 'depth':1})
+    move = [brain.getId for brain in move if brain.getId not in keep]
+    cp = portal.manage_cutObjects(move)
+    portal['no'].manage_pasteObjects(cp)
+
+    # Make sure all objects in /no are 'no'
+    def set_no(ob, path):
+        getLanguage = getattr(ob, 'getLanguage', None)
+        setLanguage = getattr(ob, 'setLanguage', None)
+        if None not in (getLanguage, setLanguage):
+            if getLanguage() != 'no':
+                setLanguage('no')
+                ob.reindexObject()
+    portal['no'].ZopeFindAndApply(portal['no'], search_sub=True, apply_func=set_no)
+
+    # Move portlets to /no folder
+    for manager in (u'plone.leftcolumn', u'plone.rightcolumn'):
+        portal_col = getUtility(IPortletManager, name=manager, context=portal)
+        portal_map = getMultiAdapter((portal, portal_col), IPortletAssignmentMapping, context=portal)
+        no_col = getUtility(IPortletManager, name=manager, context=portal['no'])
+        no_map = getMultiAdapter((portal['no'], no_col), IPortletAssignmentMapping, context=portal['no'])
+
+        keep = ['navigation', 'quick-upload']
+        move = [x for x in portal_map if x not in keep]
+        for key in move:
+            no_map[key] = portal_map[key]
+        for key in move:
+            del portal_map[key]
+
+    # Create default pages
+    titles = {
+        'no': 'Velkommen til FOOBAR kommune!',
+        'en': 'Welcome to FOOBAR kommune!',
+        'fr': 'Bienvenue sur FOOBAR kommune!',
+        'ar': 'مرحبا بكم في FOOBAR kommune',
+        'ru': 'Добро пожаловать в FOOBAR Kommune!',
+        'tr': 'FOOBAR yenize hoş geldiniz!',
+    }
+
+    wf = getToolByName(portal, 'portal_workflow')
+    portal['no'].invokeFactory('Document', id='landing-page', title=titles['no'])
+    page = portal['no']['landing-page']
+    page.unmarkCreationFlag()
+    wf.doActionFor(page, 'publish')
+    portal['no'].setDefaultPage('landing-page')
+    portal['no'].reindexObject()
+
+    for id in langs[1:]:
+        translation = page.addTranslation(id, title=titles[id])
+        translation.unmarkCreationFlag()
+        wf.doActionFor(translation, 'publish')
+        translation.reindexObject()
+        portal[id].setDefaultPage('landing-page')
+        portal[id].reindexObject()
+
+    if 'front-page' in portal['en']:
+        portal['en'].manage_delObjects('front-page')
+
+    # Translate tema folder
+    titles = {
+        'no': 'Tema',
+        'en': 'Services',
+        'fr': 'Services',
+        'ar': 'الخدمات',
+        'ru': 'услуги',
+        'tr': 'Hizmetleri',
+    }
+    tema = portal['no']['tema']
+    for id in langs[1:]:
+        translation = tema.addTranslation(id, title=titles[id])
+        translation.unmarkCreationFlag()
+        translation.setLayout('tema_sd_view')
+        wf.doActionFor(translation, 'publish')
+        translation.reindexObject()
+
+    transaction.commit()
 

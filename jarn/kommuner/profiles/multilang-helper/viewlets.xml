@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object>
+  <order manager="plone.portalheader" skinname="policy">
+    <viewlet name="plone.skip_links" />
+    <viewlet name="plone.app.i18n.locales.languageselector" /> 
+    <viewlet name="plone.site_actions" />
+    <viewlet name="plone.global_sections" />
+    <viewlet name="plone.personal_bar" />
+    <viewlet name="plone.path_bar" />
+  </order>
+  <hidden manager="plone.portalheader" skinname="policy">
+    <viewlet name="plone.logo" />
+    <viewlet name="plone.searchbox" />
+  </hidden>
+  <hidden manager="plone.portalfooter" skinname="policy">
+    <viewlet name="plone.site_actions" />
+  </hidden>
+  <hidden manager="plone.abovecontent" skinname="policy">
+    <viewlet name="plone.path_bar" />
+  </hidden>
+</object>

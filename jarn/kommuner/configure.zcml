@@ -104,4 +104,22 @@
       handler=".setuphandlers.setupLanguageFolders">
   </genericsetup:importStep>
 
+  <genericsetup:registerProfile
+      name="multilang-helper"
+      title="Norwegian Communes Language Helper"
+      directory="profiles/multilang-helper"
+      description="Extension profile used during language setup and upgrade"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="multilang-upgrade"
+      title="Norwegian Communes Language Upgrade"
+      directory="profiles/multilang-upgrade"
+      description="Extension profile used to upgrade existing sites"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
 </configure>

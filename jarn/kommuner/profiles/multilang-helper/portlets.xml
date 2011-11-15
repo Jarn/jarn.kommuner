@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+  <!-- Unhide root nav portlet -->
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/"
+      type="portlets.Navigation"
+      name="navigation"
+      visible="True">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="root">/</property>
+    <property name="includeTop">False</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <!-- Assign hidden nav portlet to /no tree -->
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/no"
+      type="portlets.Navigation"
+      name="navigation"
+      insert-before="*"
+      visible="False">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="includeTop">True</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <!-- Assign nav portlets to remaining language folders -->
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/en"
+      type="portlets.Navigation"
+      name="navigation"
+      insert-before="*"
+      visible="True">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="includeTop">True</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/fr"
+      type="portlets.Navigation"
+      name="navigation"
+      insert-before="*"
+      visible="True">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="includeTop">True</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/ar"
+      type="portlets.Navigation"
+      name="navigation"
+      insert-before="*"
+      visible="True">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="includeTop">True</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/ru"
+      type="portlets.Navigation"
+      name="navigation"
+      insert-before="*"
+      visible="True">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="includeTop">True</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <assignment
+      manager="plone.leftcolumn"
+      category="context"
+      key="/tr"
+      type="portlets.Navigation"
+      name="navigation"
+      insert-before="*"
+      visible="True">
+    <property name="name" i18n:translate="">Navigation</property>
+    <property name="includeTop">True</property>
+    <property name="topLevel">0</property>
+  </assignment>
+
+  <!-- Blacklist parent portlets in left column -->
+  <blacklist
+      manager="plone.leftcolumn"
+      category="context"
+      location="/no"
+      status="block"
+      />
+
+  <blacklist
+      manager="plone.leftcolumn"
+      category="context"
+      location="/en"
+      status="block"
+      />
+
+  <blacklist
+      manager="plone.leftcolumn"
+      category="context"
+      location="/fr"
+      status="block"
+      />
+
+  <blacklist
+      manager="plone.leftcolumn"
+      category="context"
+      location="/ar"
+      status="block"
+      />
+
+  <blacklist
+      manager="plone.leftcolumn"
+      category="context"
+      location="/ru"
+      status="block"
+      />
+
+  <blacklist
+      manager="plone.leftcolumn"
+      category="context"
+      location="/tr"
+      status="block"
+      />
+
+</portlets>

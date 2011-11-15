@@ -149,4 +149,14 @@
     permission="zope2.View"
     />
 
+  <!-- Alternative language switcher -->
+  <browser:view
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".switcher.UncachedLanguageSwitcher"
+      name="uncached-language-switcher"
+      permission="zope.Public"
+      menu="plone_displayviews"
+      title="Uncached language switcher"
+      />
+
 </configure>
