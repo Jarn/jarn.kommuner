@@ -1,6 +1,7 @@
 from Acquisition import aq_parent
 from AccessControl import ClassSecurityInfo
 from zExceptions import Redirect
+from plone.indexer import indexer
 from Products.Archetypes import atapi
 from Products.Archetypes.atapi import AnnotationStorage
 from Products.ATContentTypes.content import schemata
@@ -138,3 +139,14 @@ class ServiceDescription(ATCTContent):
 
 
 atapi.registerType(ServiceDescription, PROJECTNAME)
+
+@indexer(IServiceDescription)
+def linkedTextIndexer(obj):
+    """
+    Get SearchableText for all objects we link to
+    """
+    return " ".join(
+        x.SearchableText()
+        for x
+        in obj.getLos_categories() + obj.getContacts()
+    )

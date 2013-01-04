@@ -41,6 +41,11 @@
       preserveOriginal="true"
       />
 
+  <adapter
+      name="LinkedText"
+      factory=".content.service_description.linkedTextIndexer"
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="Norwegian Communes"
