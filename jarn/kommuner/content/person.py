@@ -33,6 +33,7 @@ PersonSchema = ATContentTypeSchema.copy() + atapi.Schema((
             label=_(u"Job title"),
             description=_(u"The position the person holds.")
         ),
+        searchable=True,
         required = False
     ),
     atapi.StringField(
