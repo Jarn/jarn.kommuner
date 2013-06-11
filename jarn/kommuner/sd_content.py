@@ -53,30 +53,29 @@ def getServiceDescriptionData(context, sd_id):
     los_words = getUtility(ILOSWords)
 
     sd = sd_client.getServiceDescription(sd_id)
-
     title = sd['navn'].encode('utf-8')
 
     description = unparagraph(unescape(sd['ingress'])).encode('utf-8') if 'ingress' in sd else ''
 
     general = {
         'htmlDescription': unescape(sd['beskrivelse']).encode('utf-8'),
-        'targetGroup': unescape(sd['malgruppe']).encode('utf-8'),
-        'criteria':  unescape(sd['kriterier']).encode('utf-8'),
-        'price': unescape(sd['pris']).encode('utf-8'),
-        'partners': unescape(sd['partnere']).encode('utf-8'),
-        'brochures': unescape(sd['brosjyrer']).encode('utf-8'),
+        'targetGroup': unescape(getattr(sd,'malgruppe','')).encode('utf-8'),
+        'criteria':  unescape(getattr(sd,'kriterier','')).encode('utf-8'),
+        'price': unescape(getattr(sd,'pris','')).encode('utf-8'),
+        'partners': unescape(getattr(sd,'partnere','')).encode('utf-8'),
+        'brochures': unescape(getattr(sd,'brosjyrer','')).encode('utf-8'),
     }
 
     application = {
-        'guidelines': unescape(sd['soknadVeiledning']).encode('utf-8'),
-        'attachment': unescape(sd['soknadVedlegg']).encode('utf-8'),
-        'form': unescape(sd['soknadSkjema']).encode('utf-8'),
-        'recipient': unescape(sd['soknadMottaker']).encode('utf-8'),
-        'notes': unescape(sd['soknadMerknader']).encode('utf-8'),
-        'complaint': unescape(sd['soknadKlage']).encode('utf-8'),
-        'deadline': unescape(sd['soknadFrist']).encode('utf-8'),
-        'duration': unescape(sd['soknadBehandlingstid']).encode('utf-8'),
-        'processing': unescape(sd['soknadBehandling']).encode('utf-8'),
+        'guidelines': unescape(getattr(sd,'soknadVeiledning','')).encode('utf-8'),
+        'attachment': unescape(getattr(sd,'soknadVedlegg','')).encode('utf-8'),
+        'form': unescape(getattr(sd,'soknadSkjema','')).encode('utf-8'),
+        'recipient': unescape(getattr(sd,'soknadMottaker',"")).encode('utf-8'),
+        'notes': unescape(getattr(sd,'soknadMerknader',"")).encode('utf-8'),
+        'complaint': unescape(getattr(sd,'soknadKlage',"")).encode('utf-8'),
+        'deadline': unescape(getattr(sd,'soknadFrist',"")).encode('utf-8'),
+        'duration': unescape(getattr(sd,'soknadBehandlingstid',"")).encode('utf-8'),
+        'processing': unescape(getattr(sd,'soknadBehandling',"")).encode('utf-8'),
     }
 
     laws = []
@@ -188,7 +187,7 @@ def updateActiveServiceDescriptions(context):
                 linkTranslation(context[new_id], internal_id)
             pu.changeOwnershipOf(context[new_id], 'updater')
             context[new_id].reindexObject()
-            ev = ServiceDescriptionCreated(context[context_id])
+            ev = ServiceDescriptionCreated(context[new_id])
             notify(ev)
         else:
             sd = sd[0].getObject()
